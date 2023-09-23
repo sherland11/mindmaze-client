@@ -13,19 +13,23 @@ import { PostService } from 'src/app/services/post.service';
 export class PostDetailComponent implements OnInit {
   post: Post | undefined;
   comments: Comment[] = [];
-  newComment: Comment = this.createEmptyComment();
+  newComment: Comment = { postId: 0, author: '', text: '', date: new Date() }
 
   constructor(
     private route: ActivatedRoute,
-    private postService: PostService,
-    private commentService: CommentService
+    private commentService: CommentService,
+    private postService: PostService
   ) { }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
       const postId: number = Number(params.get('id'));
-      this.post = this.postService.getPostById(postId);
-      this.loadComments(postId);
+      this.post = this.postService.getPostById(postId)
+      if (postId) {
+        this.commentService.getCommentsForPost(postId).subscribe((comments) => {
+          this.comments = comments
+        })
+      }
     });
   }
 
@@ -33,17 +37,12 @@ export class PostDetailComponent implements OnInit {
     if (this.post && this.newComment.author && this.newComment.text) {
       this.newComment.postId = this.post.id;
       this.newComment.date = new Date();
-      this.commentService.addComment(this.newComment);
-      this.newComment = this.createEmptyComment();
-      this.loadComments(this.post.id);
+      this.commentService.addComment(this.newComment).subscribe((comment) => {
+        this.comments.push(comment)
+        this.newComment = { postId: 0, author: '', text: '', date: new Date() }
+      }, (error) => {
+        console.error('Ошибка при добавлении комментария: ', error)
+      })
     }
-  }
-
-  private loadComments(postId: number): void {
-    this.comments = this.commentService.getCommentsForPost(postId);
-  }
-
-  private createEmptyComment(): Comment {
-    return { id: 0, postId: 0, author: '', text: '', date: new Date() };
   }
 }

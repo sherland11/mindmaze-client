@@ -1,19 +1,21 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 import { Comment } from '../models/comment.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CommentService {
-  private comments: Comment[] = [];
+  private apiBaseUrl = 'http://localhost:3000/comments'
   
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
-  addComment(comment: Comment): void {
-    this.comments.push(comment)
+  addComment(comment: Comment): Observable<Comment> {
+    return this.http.post<Comment>(`${this.apiBaseUrl}`, comment)
   }
 
-  getCommentsForPost(postId: number): Comment[] {
-    return this.comments.filter(comment => comment.postId === postId)
+  getCommentsForPost(postId: number): Observable<Comment[]> {
+    return this.http.get<Comment[]>(`${this.apiBaseUrl}/${postId}`)
   }
 }
