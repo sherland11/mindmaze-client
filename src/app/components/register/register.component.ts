@@ -19,21 +19,22 @@ export class RegisterComponent {
       return
     }
 
-    this.authService.register(this.username, this.password).subscribe(
-      (response) => {
+    this.authService.register(this.username, this.password).subscribe({
+      next: (response) => {
         this.handleRegistrationResponse(response)
       },
-      (error) => {
-        console.error('Ошибка при отправке запроса:', error)
+      error: (error) => {
+        console.error('Ошибка при отправке запроса:', error);
       }
-    )
+    });
   }
 
   private handleRegistrationResponse(response: any): void {
     if (response.success) {
-      localStorage.setItem('token', response.token)
+      localStorage.setItem('token', response.token);
+      console.log('Пользователь успешно зарегистрирован:', response.message);
     } else {
-      console.error('Ошибка при регистрации:', response.error)
+      console.error('Ошибка при регистрации:', response.message);
     }
   }
 }

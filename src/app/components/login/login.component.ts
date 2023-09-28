@@ -13,21 +13,23 @@ export class LoginComponent {
   constructor(private authService: AuthService) {}
 
   onSubmit(): void {
-    this.authService.login(this.username, this.password).subscribe(
-      (response) => {
+    this.authService.login(this.username, this.password).subscribe({
+      next: (response) => {
         this.handleLoginResponse(response)
       },
-      (error) => {
-        console.error('Ошибка при отправке запроса: ', error)
+      error: (error) => {
+        console.error("Ошибка при отправке запроса: ", error)
       }
-    )
+    })
   }
 
   private handleLoginResponse(response: any): void {
     if (response.success) {
-      localStorage.setItem('token', response.token)
+      localStorage.setItem('token', response.access_token)
+      console.log("Вход выполнен успешно: ", response.message);
     } else {
-      console.error("Ошибка при входе: ", response.error)
+      console.error(response)
+      console.error("Ошибка при входе: ", response.message)
     }
   }
 }

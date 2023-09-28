@@ -4,7 +4,7 @@
     <p>Дата: {{ post.date | date }}</p>
 </div>
 
-<form (submit)="addComment()">
+<form (submit)="addComment()" autocomplete="off">
   <div class="form-group">
     <label for="author">Автор</label>
     <input type="text" id="author" name="author" [(ngModel)]="newComment.author" required>
