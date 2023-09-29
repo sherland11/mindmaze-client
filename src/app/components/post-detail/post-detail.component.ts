@@ -34,15 +34,25 @@ export class PostDetailComponent implements OnInit {
   }
 
   addComment(): void {
-    if (this.post && this.newComment.author && this.newComment.text) {
-      this.newComment.postId = this.post.id;
-      this.newComment.date = new Date();
-      this.commentService.addComment(this.newComment).subscribe((comment) => {
-        this.comments.push(comment)
-        this.newComment = { postId: 0, author: '', text: '', date: new Date() }
-      }, (error) => {
-        console.error('Ошибка при добавлении комментария: ', error)
-      })
+    if (this.post &&  this.newComment.text) {
+      const userData = localStorage.getItem('user')
+      if (userData) {
+        this.newComment.author = JSON.parse(userData).username
+        this.newComment.postId = this.post.id;
+        this.newComment.date = new Date();
+        this.commentService.addComment(this.newComment).subscribe({
+          next: (comment) => {
+            this.comments.push(comment)
+            this.newComment = { postId: 0, author: '', text: '', date: new Date() }
+          },
+          error: (error) => {
+            console.error('Ошибка при добавлении комментария: ', error)
+          }
+        })
+      } else {
+        console.error("Войдите в аккаунт")
+      }
+      
     }
   }
 }

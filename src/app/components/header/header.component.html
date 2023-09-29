@@ -1,5 +1,8 @@
 <nav class="navbar">
-    <ul>
+        <a [routerLink]="['/']">Главная</a>
+        <a [routerLink]="['/posts']">Посты</a>
+        <a [routerLink]="['/register']">Регистрация</a>
+        <a [routerLink]="['/login']">Вход</a>
+        <a [routerLink]="['/profile']">Профиль</a>
         <button (click)="logout()">Выход</button>
-    </ul>
 </nav>

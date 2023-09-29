@@ -11,5 +11,6 @@ export class HeaderComponent {
 
   logout(): void {
     this.authService.logout()
+    console.log("Вы вышли из аккаунта")
   }
 }

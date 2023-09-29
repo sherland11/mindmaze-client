@@ -26,7 +26,9 @@ export class LoginComponent {
   private handleLoginResponse(response: any): void {
     if (response.success) {
       localStorage.setItem('token', response.access_token)
-      console.log("Вход выполнен успешно: ", response.message);
+      localStorage.setItem('user', JSON.stringify(response.user))
+      console.log(response.user)
+      console.log("Вход выполнен успешно: ", response.message)
     } else {
       console.error(response)
       console.error("Ошибка при входе: ", response.message)
