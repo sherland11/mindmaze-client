@@ -12,6 +12,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';
 import { HeaderComponent } from './components/header/header.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { ProfileByUsernameComponent } from './components/profile-by-username/profile-by-username.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { ProfileComponent } from './components/profile/profile.component';
     RegisterComponent,
     LoginComponent,
     HeaderComponent,
-    ProfileComponent
+    ProfileComponent,
+    ProfileByUsernameComponent
   ],
   imports: [
     BrowserModule,
