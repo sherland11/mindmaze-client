@@ -1,0 +1,13 @@
+<div>
+    <form (submit)="onSubmit()">
+        <div class="form-group">
+            <label for="title">Заголовок:</label>
+            <input type="text" id="title" name="title" [(ngModel)]="post.title" required>
+        </div>
+        <div class="form-group">
+            <label for="content">Текст:</label>
+            <textarea id="content" name="content" [(ngModel)]="post.content" required></textarea>
+        </div>
+        <button type="submit">Создать пост</button>
+    </form>
+</div>

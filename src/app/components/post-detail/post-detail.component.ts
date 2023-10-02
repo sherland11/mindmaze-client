@@ -24,10 +24,16 @@ export class PostDetailComponent implements OnInit {
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
       const postId: number = Number(params.get('id'));
-      this.post = this.postService.getPostById(postId)
       if (postId) {
-        this.commentService.getCommentsForPost(postId).subscribe((comments) => {
-          this.comments = comments
+        this.postService.getPostById(postId).subscribe({
+          next: (post) => {
+            this.post = post
+            if (this.post) {
+              this.commentService.getCommentsForPost(postId).subscribe((comments) => {
+                this.comments = comments
+              })
+            }
+          }
         })
       }
     });

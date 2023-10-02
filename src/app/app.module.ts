@@ -13,6 +13,7 @@ import { LoginComponent } from './components/login/login.component';
 import { HeaderComponent } from './components/header/header.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { ProfileByUsernameComponent } from './components/profile-by-username/profile-by-username.component';
+import { CreatePostComponent } from './components/create-post/create-post.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { ProfileByUsernameComponent } from './components/profile-by-username/pro
     LoginComponent,
     HeaderComponent,
     ProfileComponent,
-    ProfileByUsernameComponent
+    ProfileByUsernameComponent,
+    CreatePostComponent
   ],
   imports: [
     BrowserModule,

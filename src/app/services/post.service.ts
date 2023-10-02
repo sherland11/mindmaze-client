@@ -1,32 +1,25 @@
 import { Injectable } from '@angular/core';
 import { Post } from '../models/post.model';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PostService {
-  private posts: Post[] = [
-    {
-      id: 1,
-      title: 'Заголовок поста 1',
-      content: 'Содержание поста 1...',
-      date: new Date()
-    },
-    {
-      id: 2,
-      title: 'Заголовок поста 2',
-      content: 'Содержание поста 2...',
-      date: new Date()
-    }
-  ]
+  private apiUrl = 'http://localhost:3000/posts'
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
-  getPosts(): Post[] {
-    return this.posts
+  getPosts(): Observable<Post[]> {
+    return this.http.get<Post[]>(this.apiUrl)
   }
 
-  getPostById(id: number): Post | undefined {
-    return this.posts.find(post => post.id === id)
+  getPostById(id: number): Observable<Post> {
+    return this.http.get<Post>(`${this.apiUrl}/${id}`)
+  }
+
+  createPost(postData: Post): Observable<Post> {
+    return this.http.post<Post>(this.apiUrl, postData)
   }
 }
