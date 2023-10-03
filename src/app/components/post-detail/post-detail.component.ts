@@ -13,7 +13,7 @@ import { PostService } from 'src/app/services/post.service';
 export class PostDetailComponent implements OnInit {
   post: Post | undefined;
   comments: Comment[] = [];
-  newComment: Comment = { postId: 0, author: '', text: '', date: new Date() }
+  newComment: Comment = { postId: '', author: '', text: '', date: new Date() }
 
   constructor(
     private route: ActivatedRoute,
@@ -22,21 +22,32 @@ export class PostDetailComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.route.paramMap.subscribe(params => {
-      const postId: number = Number(params.get('id'));
-      if (postId) {
-        this.postService.getPostById(postId).subscribe({
-          next: (post) => {
-            this.post = post
-            if (this.post) {
-              this.commentService.getCommentsForPost(postId).subscribe((comments) => {
-                this.comments = comments
-              })
+
+    this.route.paramMap.subscribe({
+      next: (params) => {
+        const postId: string = String(params.get('id'))
+        console.log(postId)
+        if (postId) {
+          this.postService.getPostById(postId).subscribe({
+            next: (post) => {
+              this.post = post
+              console.log(this.post)
+              console.log(post)
+              if (this.post) {
+                this.commentService.getCommentsForPost(postId).subscribe((comments) => {
+                  this.comments = comments
+                })
+              }
             }
-          }
-        })
+          })
+        } else {
+          console.error('Id не получен')
+        }
+      },
+      error: (error) => {
+        console.error(error)
       }
-    });
+    })
   }
 
   addComment(): void {
@@ -44,12 +55,12 @@ export class PostDetailComponent implements OnInit {
       const userData = localStorage.getItem('user')
       if (userData) {
         this.newComment.author = JSON.parse(userData).username
-        this.newComment.postId = this.post.id;
+        this.newComment.postId = this.post._id;
         this.newComment.date = new Date();
         this.commentService.addComment(this.newComment).subscribe({
           next: (comment) => {
             this.comments.push(comment)
-            this.newComment = { postId: 0, author: '', text: '', date: new Date() }
+            this.newComment = { postId: '', author: '', text: '', date: new Date() }
           },
           error: (error) => {
             console.error('Ошибка при добавлении комментария: ', error)

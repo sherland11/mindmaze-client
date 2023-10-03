@@ -9,7 +9,6 @@ import { PostService } from 'src/app/services/post.service';
 })
 export class CreatePostComponent {
   post: Post = {
-    id: 0,
     title: '',
     content: '',
     date: new Date()

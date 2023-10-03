@@ -13,7 +13,7 @@ const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'posts', component: PostListComponent },
   { path: 'post/:id', component: PostDetailComponent },
-  { path: '/create-post', component: CreatePostComponent },
+  { path: 'create-post', component: CreatePostComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
   { path: 'profile', component: ProfileComponent },

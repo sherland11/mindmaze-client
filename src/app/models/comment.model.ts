@@ -1,5 +1,5 @@
 export interface Comment {
-    postId: number;
+    postId: string | undefined;
     text: string;
     author: string;
     date: Date;
