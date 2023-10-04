@@ -14,6 +14,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { ProfileByUsernameComponent } from './components/profile-by-username/profile-by-username.component';
 import { CreatePostComponent } from './components/create-post/create-post.component';
+import { EditPostComponent } from './components/edit-post/edit-post.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { CreatePostComponent } from './components/create-post/create-post.compon
     HeaderComponent,
     ProfileComponent,
     ProfileByUsernameComponent,
-    CreatePostComponent
+    CreatePostComponent,
+    EditPostComponent
   ],
   imports: [
     BrowserModule,

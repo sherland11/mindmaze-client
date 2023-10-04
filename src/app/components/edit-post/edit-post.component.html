@@ -1,0 +1,11 @@
+<form (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <label for="title">Заголовок:</label>
+    <input type="text" id="title" name="title" [(ngModel)]="editedPost.title" required>
+  </div>
+  <div class="form-group">
+    <label for="content">Содержание:</label>
+    <textarea id="content" name="content" [(ngModel)]="editedPost.content" required></textarea>
+  </div>
+  <button type="submit">Сохранить</button>
+</form>
