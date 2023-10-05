@@ -4,6 +4,10 @@
     <p>Дата: {{ post.date | date }}</p>
 </div>
 
+<div>
+  <a [routerLink]="['/edit-post', post?._id]">Редактировать пост</a>
+</div>
+
 <form (submit)="addComment()" autocomplete="off">
   <div class="form-group">
     <label for="text">Текст</label>
@@ -11,6 +15,8 @@
   </div>
   <button type="submit">Добавить комментарий</button>
 </form>
+
+
 
 <div class="post-detail" *ngIf="post">
   <h3>Комментарии</h3>

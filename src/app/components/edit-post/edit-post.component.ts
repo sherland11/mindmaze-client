@@ -42,7 +42,7 @@ export class EditPostComponent implements OnInit {
     onSubmit(): void {
       this.postService.updatePost(this.editedPost).subscribe({
         next: () => {
-          this.router.navigate(['/posts', this.editedPost._id])
+          this.router.navigate(['/post', this.editedPost._id])
         },
         error: (error) => {
           console.error(error)
