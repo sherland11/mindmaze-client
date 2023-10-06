@@ -15,6 +15,11 @@ export class PostService {
     return this.http.get<Post[]>(this.apiUrl)
   }
 
+  searchPosts(searchTerm: string): Observable<Post[]> {
+    const params = { searchTerm }
+    return this.http.get<Post[]>(`${this.apiUrl}/search`, { params })
+  }
+
   getPostById(id: string): Observable<Post> {
     return this.http.get<Post>(`${this.apiUrl}/${id}`)
   }

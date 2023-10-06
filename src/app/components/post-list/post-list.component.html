@@ -1,3 +1,5 @@
+<input type="text" [(ngModel)]="searchTerm" placeholder="Найти статью" (input)="onSearchInput()">
+
 <div *ngFor="let post of posts">
     <h2>{{ post.title }}</h2>
     <p>{{ post.content }}</p>
