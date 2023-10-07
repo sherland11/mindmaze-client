@@ -11,6 +11,8 @@ export class CreatePostComponent {
   post: Post = {
     title: '',
     content: '',
+    topic: '',
+    username: '',
     date: new Date()
     
   }
@@ -18,13 +20,21 @@ export class CreatePostComponent {
   constructor(private postService: PostService) {}
 
   onSubmit() {
-    this.postService.createPost(this.post).subscribe({
-      next: (response) => {
-        console.log('Пост успешно создан:', response)
-      },
-      error: (error) => {
-        console.error(error)
-      }
-  })
+    const userData = localStorage.getItem('user')
+    if (userData) {
+      const userName = JSON.parse(userData).username
+      this.post.username = userName
+      this.postService.createPost(this.post).subscribe({
+        next: (response) => {
+          console.log('Пост успешно создан:', response)
+        },
+        error: (error) => {
+          console.error(error)
+        }
+      })
+    } else {
+      console.error("Войдите в аккаунт")
+    }
+    
   }
 }

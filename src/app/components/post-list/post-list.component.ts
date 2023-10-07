@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { Subject, debounceTime, distinctUntilChanged } from 'rxjs';
 import { Post } from 'src/app/models/post.model';
 import { PostService } from 'src/app/services/post.service';
@@ -10,43 +11,33 @@ import { PostService } from 'src/app/services/post.service';
 })
 export class PostListComponent implements OnInit {
   posts: Post[] = []
-  searchTerm: string = ''
-  private searchTerms = new Subject<string>()
+  searchForm: FormGroup
 
-  constructor(private postService: PostService) {}
+  constructor(private postService: PostService, private formBuilder: FormBuilder) {
+    this.searchForm = this.formBuilder.group({
+      searchTerm: '',
+      topic: ''
+    })
+  }
 
   ngOnInit(): void {
-    // this.postService.getPosts().subscribe({
-    //   next: (data) => {
-    //     this.posts = data
-    //   },
-    //   error: (error) => {
-    //     console.error(error)
-    //   }
-    // })
-    this.searchTerms
-      .pipe(
-        debounceTime(300),
-        distinctUntilChanged()
-      )
-      .subscribe({
-        next: (term) => {
-          this.searchPosts(term)
-        },
-        error: (error) => {
-          console.error(error)
-        }
-      })
-
-      this.searchPosts(this.searchTerm)
+    this.searchForm.valueChanges.subscribe({
+      next: () => {
+        this.searchPosts()
+      },
+      error: (error) => {
+        console.error(error)
+      }
+    })
+    this.searchPosts()
    }
 
    onSearchInput(): void {
-    this.searchTerms.next(this.searchTerm)
+    this.searchPosts()
    }
 
-   private searchPosts(term: string): void {
-    this.postService.searchPosts(term).subscribe({
+   private searchPosts(): void {
+    this.postService.searchPosts(this.searchForm.value.searchTerm, this.searchForm.value.topic).subscribe({
       next: (data) => {
         this.posts = data
       },

@@ -10,7 +10,7 @@ import { PostService } from 'src/app/services/post.service';
   styleUrls: ['./edit-post.component.scss']
 })
 export class EditPostComponent implements OnInit {
-  editedPost: Post = { title: '', content: '', date: new Date() };
+  editedPost: Post = { title: '', content: '', topic: '', username: '', date: new Date() };
 
   constructor(
     private route: ActivatedRoute,
