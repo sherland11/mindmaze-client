@@ -11,8 +11,9 @@ import { CreatePostComponent } from './components/create-post/create-post.compon
 import { EditPostComponent } from './components/edit-post/edit-post.component';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },
+  { path: '', component: PostListComponent },
   { path: 'posts', component: PostListComponent },
+  { path: 'posts/:topic', component: PostListComponent },
   { path: 'post/:id', component: PostDetailComponent },
   { path: 'create-post', component: CreatePostComponent },
   { path: 'edit-post/:id', component: EditPostComponent },
