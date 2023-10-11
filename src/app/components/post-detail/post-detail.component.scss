@@ -1,0 +1,41 @@
+.post-detail {
+    margin: 100px auto 0 auto;
+    width: 640px;
+}
+
+.post-detail__title {
+    font-size: 36px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.post-detail__content {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.post-detail__info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.post-detail__edit {
+    margin-bottom: 40px;
+}
+
+.post-detail__form {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 40px;
+}
+
+.post-detail__comment-input {
+    margin-bottom: 10px;
+}
+
+.post-detailt__comments-title {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}

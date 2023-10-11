@@ -1,24 +1,16 @@
-<div>
-    <form (submit)="onSubmit()">
-        <div class="form-group">
-            <label for="title">Заголовок:</label>
-            <input type="text" id="title" name="title" [(ngModel)]="post.title" required>
-        </div>
-        <div class="form-group">
-            <label for="content">Текст:</label>
-            <textarea id="content" name="content" [(ngModel)]="post.content" required></textarea>
-        </div>
-        <div class="form-group">
-            <label for="topic">Тема:</label>
-            <select id="topic" name="topic" [(ngModel)]="post.topic">
-                <option value="природа">Природа</option>
-                <option value="погода">Погода</option>
-                <option value="политика">Политика</option>
-                <option value="технологии">Технологии</option>
-                <option value="культура">Культура</option>
-                <option value="общество">Общество</option>
-            </select>
-        </div>
-        <button type="submit">Создать пост</button>
+<div class="create-post">
+    <form class="create-post__form" (submit)="onSubmit()">
+        <input type="text" id="title" name="title" placeholder="Заголовок" [(ngModel)]="post.title" required>
+        <textarea id="content" name="content" placeholder="Текст" [(ngModel)]="post.content" required></textarea>
+        <select id="topic" name="topic" [(ngModel)]="post.topic">
+            <option value="">Выбрать тему</option>
+            <option value="природа">Природа</option>
+            <option value="погода">Погода</option>
+            <option value="политика">Политика</option>
+            <option value="технологии">Технологии</option>
+            <option value="культура">Культура</option>
+            <option value="общество">Общество</option>
+        </select>
+        <button class="submit-button" type="submit">Создать пост</button>
     </form>
 </div>

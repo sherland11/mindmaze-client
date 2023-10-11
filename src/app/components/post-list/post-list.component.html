@@ -1,21 +1,23 @@
-<div class="search-form">
-    <form [formGroup]="searchForm" (ngSubmit)="onSearchInput()">
-        <input type="text" formControlName="searchTerm" placeholder="Найти статью">
-        <select formControlName="topic">
-            <option value="">Выберите тему</option>
-            <option value="природа">Природа</option>
-            <option value="погода">Погода</option>
-            <option value="политика">Политика</option>
-            <option value="технологии">Технологии</option>
-            <option value="культура">Культура</option>
-            <option value="общество">Общество</option>
-        </select>
-        <button type="submit">Поиск</button>
-    </form>
-</div>
-<div *ngFor="let post of posts">
-    <h2>{{ post.title }}</h2>
-    <p>{{ post.content }}</p>
-    <p>Дата: {{ post.date | date }}</p>
-    <a [routerLink]="['/post', post._id]">Полная статья</a>
+<div class="post-list">
+    <div class="post-list__search-form">
+        <form [formGroup]="searchForm" (ngSubmit)="onSearchInput()">
+            <input class="post-list__searchTerm" type="text" formControlName="searchTerm" placeholder="Найти статью">
+            <select class="post-list__topic" formControlName="topic">
+                <option value="">Выберите тему</option>
+                <option value="природа">Природа</option>
+                <option value="погода">Погода</option>
+                <option value="политика">Политика</option>
+                <option value="технологии">Технологии</option>
+                <option value="культура">Культура</option>
+                <option value="общество">Общество</option>
+            </select>
+            <!-- <button type="submit">Поиск</button> -->
+        </form>
+    </div>
+    <div *ngFor="let post of posts" class="post-list__post">
+        <a [routerLink]="['/post', post._id]">
+            <div class="post-list__title">{{ post.title }}</div>
+            <div class="post-list__content">{{ post.content }}</div>
+        </a>
+    </div>
 </div>

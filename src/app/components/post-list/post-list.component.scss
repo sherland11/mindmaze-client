@@ -1,0 +1,38 @@
+.post-list {
+    width: 640px;
+    margin: 50px auto;
+    color: #c9cccf;
+
+    .post-list__search-form {
+        margin-bottom: 20px; 
+    }
+
+    .post-list__searchTerm {
+        width: 70%;
+    }
+
+    .post-list__topic {
+        width: 28%;
+    }
+
+    .post-list__post {
+        background-color: #323338;
+        padding: 20px 24px;
+    }
+
+    .post-list__post a {
+        text-decoration: none;
+        color: inherit;
+    }
+
+    .post-list__title {
+        font-size: 24px;
+        font-weight: 600;
+        margin-bottom: 10px;
+    }
+
+    .post-list__content {
+        font-size: 17px;
+
+    }
+}

@@ -1,29 +1,31 @@
-<div class="post-detail" *ngIf="post">
-    <h2>{{ post.title }}</h2>
-    <p>{{ post.content }}</p>
-    <p>Дата: {{ post.date | date }}</p>
-    <p>Автор: {{ post.username }}</p>
-</div>
+<div class="post-detail">
 
-<div>
-  <a [routerLink]="['/edit-post', post?._id]">Редактировать пост</a>
-</div>
-
-<form (submit)="addComment()" autocomplete="off">
-  <div class="form-group">
-    <label for="text">Текст</label>
-    <input type="text" id="text" name="text" [(ngModel)]="newComment.text" required>
+  <div class="post-detail__post" *ngIf="post">
+      <p class="post-detail__title">{{ post.title }}<p>
+      <p class="post-detail__content">{{ post.content }}</p>
+      <div class="post-detail__info">
+        <a class="post-detail__author" [routerLink]="['/profile', post.username]"> {{ post.username }}</a>
+        <p class="post-detail__date">Дата: {{ post.date | date }}</p>
+      </div>
   </div>
-  <button type="submit">Добавить комментарий</button>
-</form>
 
+  <div class="post-detail__edit">
+    <a [routerLink]="['/edit-post', post?._id]">Редактировать пост</a>
+  </div>
 
+  <form class="post-detail__form" (submit)="addComment()" autocomplete="off">
+    <input class="post-detail__comment-input" type="text" id="text" name="text" placeholder="Комментарий" [(ngModel)]="newComment.text" required>
+    <button class="post-detail__submit" type="submit">Добавить комментарий</button>
+  </form>
 
-<div class="post-detail" *ngIf="post">
-  <h3>Комментарии</h3>
-  <ul>
-    <li *ngFor="let comment of comments">
-      <strong>{{ comment.author }}:</strong> {{ comment.text }}
-    </li>
-  </ul>
+  <div class="post-detail__comments" *ngIf="post">
+    <div class="post-detailt__comments-title">Комментарии</div>
+    <ul>
+      <li *ngFor="let comment of comments">
+        <div>{{ comment.author }}:</div> 
+        <div>{{ comment.text }}</div>
+      </li>
+    </ul>
+  </div>
+
 </div>

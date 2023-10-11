@@ -1,7 +1,9 @@
-<div *ngIf="user">
-    <h2>Профиль пользователя</h2>
-    <p>Имя пользователя: {{ user.username }}</p>
-</div>
-<div *ngIf="!user">
-    <p>Зарегистрируйтесь или войдите в аккаунт</p>
+<div class="profile">
+    <div class="profile__user" *ngIf="user">
+        <h2>Профиль пользователя</h2>
+        <p>Имя пользователя: {{ user.username }}</p>
+    </div>
+    <div class="profile__no-user" *ngIf="!user">
+        <p>Зарегистрируйтесь или войдите в аккаунт</p>
+    </div>
 </div>
