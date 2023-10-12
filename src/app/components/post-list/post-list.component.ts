@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { debounceTime, switchMap } from 'rxjs';
 import { Post } from 'src/app/models/post.model';
 import { PostService } from 'src/app/services/post.service';
 
@@ -37,13 +38,18 @@ export class PostListComponent implements OnInit {
       }
     })
 
-    this.searchForm.valueChanges.subscribe({
-      next: () => {
-        this.searchPosts()
-      },
-      error: (error) => {
-        console.error(error)
-      }
+    this.searchForm.valueChanges
+    .pipe(
+      debounceTime(300),
+      switchMap(() => this.postService.searchPosts(this.searchForm.value.searchTerm, this.searchForm.value.topic))
+    )
+    .subscribe({
+        next: () => {
+          this.searchPosts()
+        },
+        error: (error) => {
+          console.error(error)
+        }
     })
    }
 

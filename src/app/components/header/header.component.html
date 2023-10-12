@@ -3,8 +3,8 @@
                 <a [routerLink]="['/']" class="header__title">MindMaze</a>
                 <a [routerLink]="['/profile']">Профиль</a>
                 <a [routerLink]="['/create-post']">Написать пост</a>
-                <a [routerLink]="['/register']">Регистрация</a>
-                <a [routerLink]="['/login']">Вход</a>
-                <button (click)="logout()">Выход</button>
+                <a *ngIf="!isUserLogIn" [routerLink]="['/register']">Регистрация</a>
+                <a *ngIf="!isUserLogIn" [routerLink]="['/login']">Вход</a>
+                <button *ngIf="isUserLogIn" (click)="logout()">Выход</button>
         </nav>
 </header>

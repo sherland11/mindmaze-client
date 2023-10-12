@@ -29,6 +29,7 @@ export class LoginComponent {
       localStorage.setItem('user', JSON.stringify(response.user))
       console.log(response.user)
       console.log("Вход выполнен успешно: ", response.message)
+      window.location.reload()
     } else {
       console.error(response)
       console.error("Ошибка при входе: ", response.message)
