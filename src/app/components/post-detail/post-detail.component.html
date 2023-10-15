@@ -9,21 +9,29 @@
       </div>
   </div>
 
+  <div class="post-detail__like">
+    <button (click)="toggleLike()">
+      <span *ngIf="isLiked">Убрать лайк</span>
+      <span *ngIf="!isLiked">Поставить лайк</span>
+    </button>
+
+    <div class="post-detail__like-quantity"> {{ post?.likes?.length }} </div>
+  </div>
+
   <div class="post-detail__edit">
     <a [routerLink]="['/edit-post', post?._id]">Редактировать пост</a>
   </div>
 
-  <form class="post-detail__form" (submit)="addComment()" autocomplete="off">
-    <input class="post-detail__comment-input" type="text" id="text" name="text" placeholder="Комментарий" [(ngModel)]="newComment.text" required>
-    <button class="post-detail__submit" type="submit">Добавить комментарий</button>
-  </form>
-
   <div class="post-detail__comments" *ngIf="post">
-    <div class="post-detailt__comments-title">Комментарии</div>
+    <form class="post-detail__form" (submit)="addComment()" autocomplete="off">
+      <div class="post-detailt__comments-title">Комментарии</div>
+      <textarea class="post-detail__comment-textarea" id="text" name="text" placeholder="Комментарий" [(ngModel)]="newComment.text" required></textarea>
+      <button class="post-detail__submit" type="submit">Добавить комментарий</button>
+    </form>
     <ul>
-      <li *ngFor="let comment of comments">
-        <div>{{ comment.author }}:</div> 
-        <div>{{ comment.text }}</div>
+      <li class="post-detail__comment" *ngFor="let comment of comments">
+        <div class="post-detail__comment-author">{{ comment.author }}</div> 
+        <div class="post-detail__comment-text">{{ comment.text }}</div>
       </li>
     </ul>
   </div>

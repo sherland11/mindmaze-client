@@ -3,6 +3,10 @@
     width: 640px;
 }
 
+.post-detail a {
+    text-decoration: none;
+}
+
 .post-detail__title {
     font-size: 36px;
     font-weight: 600;
@@ -11,17 +15,29 @@
 
 .post-detail__content {
     font-size: 20px;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
 }
 
 .post-detail__info {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
 }
 
 .post-detail__edit {
     margin-bottom: 40px;
+}
+
+.post-detail__comments {
+    background-color: #f0ebeb;
+    padding: 24px;
+    border-radius: 12px;
+}
+
+.post-detailt__comments-title {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 30px;
 }
 
 .post-detail__form {
@@ -30,12 +46,22 @@
     margin-bottom: 40px;
 }
 
-.post-detail__comment-input {
+.post-detail__comment-textarea {
+    margin-bottom: 10px;
+    resize: none;
+    padding: 10px;
+    font-size: 18px;
+    height: 68px;
+}
+
+.post-detail__comment {
+    margin-bottom: 20px;
+}
+
+.post-detail__comment-author {
     margin-bottom: 10px;
 }
 
-.post-detailt__comments-title {
-    font-size: 20px;
-    font-weight: 600;
-    margin-bottom: 10px;
+.post-detail__comment-text {
+    font-size: 18px;
 }

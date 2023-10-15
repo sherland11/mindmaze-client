@@ -14,6 +14,7 @@ export class PostDetailComponent implements OnInit {
   post: Post | undefined;
   comments: Comment[] = [];
   newComment: Comment = { postId: '', author: '', text: '', date: new Date() }
+  isLiked: boolean = false
 
   constructor(
     private route: ActivatedRoute,
@@ -31,6 +32,7 @@ export class PostDetailComponent implements OnInit {
           this.postService.getPostById(postId).subscribe({
             next: (post) => {
               this.post = post
+              this.checkIfLiked()
               console.log(this.post)
               console.log(post)
               if (this.post) {
@@ -70,6 +72,58 @@ export class PostDetailComponent implements OnInit {
         console.error("Войдите в аккаунт")
       }
       
+    }
+  }
+
+  toggleLike() {
+    if (this.isLiked) {
+      this.deleteLike()
+    } else {
+      this.likePost()
+    }
+  }
+
+  likePost() {
+    const userData = localStorage.getItem('user')
+    if (userData) {
+      const username = JSON.parse(userData).username
+      this.postService.likePost(this.post?._id as string, username).subscribe({
+        next: (updatedPost) => {
+          this.post = updatedPost
+          this.isLiked = true
+        },
+        error: (error) => {
+          console.error(error)
+        }
+      })
+    } else {
+      console.error("Ошибка! Войдите в аккаунт")
+    }
+  }
+
+  deleteLike() {
+    const userData = localStorage.getItem('user')
+    if (userData) {
+      const username = JSON.parse(userData).username
+      this.postService.deleteLike(this.post?._id as string, username).subscribe({
+        next: (updatedPost) => {
+          this.post = updatedPost;
+          this.isLiked = false;
+        },
+        error: (error) => {
+          console.error(error);
+        }
+      });
+    } else {
+      console.error('Ошибка! Войдите в аккаунт')
+    }
+  }
+
+  private checkIfLiked() {
+    const userData = localStorage.getItem('user')
+    if (userData) {
+      const username = JSON.parse(userData).username
+      this.isLiked = this.post?.likes.some((like) => like === username) as boolean
     }
   }
 }

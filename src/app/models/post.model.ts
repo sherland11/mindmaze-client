@@ -5,5 +5,6 @@ export interface Post {
     date: Date;
     topic: string;
     username: string;
+    likes: string[]
     comments?: Comment[];
 }

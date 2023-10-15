@@ -7,13 +7,26 @@
         margin-bottom: 20px; 
     }
 
+    .post-list__form-group {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+    }
+
     .post-list__searchTerm {
         width: 70%;
+        margin-right: 20px;
+        padding: 10px;
+        font-size: 20px;
     }
 
     .post-list__topic {
-        width: 28%;
+        width: 25%;
+        padding: 10px;
+        font-size: 20px;
     }
+
+
 
     .post-list__post {
         background-color: #323338;

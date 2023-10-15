@@ -1,16 +1,18 @@
 <div class="post-list">
     <div class="post-list__search-form">
         <form [formGroup]="searchForm" (ngSubmit)="onSearchInput()">
-            <input class="post-list__searchTerm" type="text" formControlName="searchTerm" placeholder="Найти статью">
-            <select class="post-list__topic" formControlName="topic">
-                <option value="">Выберите тему</option>
-                <option value="природа">Природа</option>
-                <option value="погода">Погода</option>
-                <option value="политика">Политика</option>
-                <option value="технологии">Технологии</option>
-                <option value="культура">Культура</option>
-                <option value="общество">Общество</option>
-            </select>
+            <div class="post-list__form-group">
+                <input class="post-list__searchTerm" type="text" formControlName="searchTerm" placeholder="Найти статью">
+                <select class="post-list__topic" formControlName="topic">
+                    <option value="">Тема</option>
+                    <option value="природа">Природа</option>
+                    <option value="погода">Погода</option>
+                    <option value="политика">Политика</option>
+                    <option value="технологии">Технологии</option>
+                    <option value="культура">Культура</option>
+                    <option value="общество">Общество</option>
+                </select>
+            </div>
             <!-- <button type="submit">Поиск</button> -->
         </form>
     </div>

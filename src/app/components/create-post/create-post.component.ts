@@ -13,6 +13,7 @@ export class CreatePostComponent {
     content: '',
     topic: '',
     username: '',
+    likes: [],
     date: new Date()
     
   }
