@@ -1,0 +1,31 @@
+.edit-post {
+    margin: 0 auto;
+    width: 640px;
+    margin-top: 100px;
+}
+
+.edit-post__form {
+    display: flex;
+    flex-direction: column;
+}
+
+.edit-post__form input {
+    height: 32px;
+    font-size: 20px;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.edit-post__form textarea {
+    resize: none;
+    height: 160px;
+    font-size: 20px;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.edit-post__form select {
+    font-size: 20px;
+    padding: 10px;
+    margin-bottom: 40px;
+}

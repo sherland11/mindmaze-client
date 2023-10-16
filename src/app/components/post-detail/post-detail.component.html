@@ -10,9 +10,9 @@
   </div>
 
   <div class="post-detail__like">
-    <button (click)="toggleLike()">
-      <span *ngIf="isLiked">Убрать лайк</span>
-      <span *ngIf="!isLiked">Поставить лайк</span>
+    <button class="post-detail__like-btn" (click)="toggleLike()">
+      <img *ngIf="isLiked" src="../../../assets/like-fill.svg" alt="лайк">
+      <img *ngIf="!isLiked" src="../../../assets/like.svg" alt="лайк">
     </button>
 
     <div class="post-detail__like-quantity"> {{ post?.likes?.length }} </div>

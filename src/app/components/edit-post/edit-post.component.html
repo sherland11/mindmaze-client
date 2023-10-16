@@ -1,22 +1,16 @@
-<form (ngSubmit)="onSubmit()">
-  <div class="form-group">
-    <label for="title">Заголовок:</label>
-    <input type="text" id="title" name="title" [(ngModel)]="editedPost.title" required>
-  </div>
-  <div class="form-group">
-    <label for="content">Содержание:</label>
-    <textarea id="content" name="content" [(ngModel)]="editedPost.content" required></textarea>
-  </div>
-  <div class="form-group">
-    <label for="topic">Тема:</label>
-    <select id="topic" name="topic" [(ngModel)]="editedPost.topic">
-      <option value="природа">Природа</option>
-      <option value="погода">Погода</option>
-      <option value="политика">Политика</option>
-      <option value="технологии">Технологии</option>
-      <option value="культура">Культура</option>
-      <option value="общество">Общество</option>
-    </select>
-  </div>
-  <button type="submit">Сохранить</button>
-</form>
+<div class="edit-post">
+  <form class="edit-post__form" (submit)="onSubmit()">
+      <input type="text" id="title" name="title" placeholder="Заголовок" [(ngModel)]="editedPost.title" required>
+      <textarea id="content" name="content" placeholder="Текст" [(ngModel)]="editedPost.content" required></textarea>
+      <select id="topic" name="topic" [(ngModel)]="editedPost.topic">
+          <option value="">Выбрать тему</option>
+          <option value="природа">Природа</option>
+          <option value="погода">Погода</option>
+          <option value="политика">Политика</option>
+          <option value="технологии">Технологии</option>
+          <option value="культура">Культура</option>
+          <option value="общество">Общество</option>
+      </select>
+      <button class="submit-button" type="submit">Редактировать пост</button>
+  </form>
+</div>
