@@ -11,6 +11,7 @@
             <option value="культура">Культура</option>
             <option value="общество">Общество</option>
         </select>
+        <input type="file" id="image" (change)="onFileSelected($event)" accept="image/*">
         <button class="submit-button" type="submit">Создать пост</button>
     </form>
 </div>

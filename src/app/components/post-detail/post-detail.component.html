@@ -2,6 +2,7 @@
 
   <div class="post-detail__post" *ngIf="post">
       <p class="post-detail__title">{{ post.title }}<p>
+      <img class="post-detailt__image" [src]="imageSrc" alt="">
       <p class="post-detail__content">{{ post.content }}</p>
       <div class="post-detail__info">
         <a class="post-detail__author" [routerLink]="['/profile', post.username]"> {{ post.username }}</a>

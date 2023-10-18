@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SafeUrl } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { Comment } from 'src/app/models/comment.model';
 import { Post } from 'src/app/models/post.model';
@@ -15,6 +16,7 @@ export class PostDetailComponent implements OnInit {
   comments: Comment[] = [];
   newComment: Comment = { postId: '', author: '', text: '', date: new Date() }
   isLiked: boolean = false
+  imageSrc: string = ''
 
   constructor(
     private route: ActivatedRoute,
@@ -39,6 +41,9 @@ export class PostDetailComponent implements OnInit {
                 this.commentService.getCommentsForPost(postId).subscribe((comments) => {
                   this.comments = comments
                 })
+                this.imageSrc = this.postService.getPostImage(post.image as string)
+                console.log(this.imageSrc)
+                
               }
             }
           })

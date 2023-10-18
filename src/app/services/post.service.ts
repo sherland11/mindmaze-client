@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Post } from '../models/post.model';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -24,7 +24,11 @@ export class PostService {
     return this.http.get<Post>(`${this.apiUrl}/${id}`)
   }
 
-  createPost(postData: Post): Observable<Post> {
+  getPostImage(imagePath: string): string {
+    return `${this.apiUrl}/images/${imagePath}`
+  }
+
+  createPost(postData: FormData): Observable<Post> {
     return this.http.post<Post>(this.apiUrl, postData)
   }
 

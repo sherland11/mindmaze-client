@@ -7,4 +7,5 @@ export interface Post {
     username: string;
     likes: string[]
     comments?: Comment[];
+    image?: string;
 }

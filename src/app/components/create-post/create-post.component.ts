@@ -15,17 +15,31 @@ export class CreatePostComponent {
     username: '',
     likes: [],
     date: new Date()
-    
   }
+  selectedImage: any
 
   constructor(private postService: PostService) {}
+
+  onFileSelected(event: any) {
+    const file = event.target.files[0];
+    if (file) {
+      this.selectedImage = file;
+    }
+  }
 
   onSubmit() {
     const userData = localStorage.getItem('user')
     if (userData) {
       const userName = JSON.parse(userData).username
       this.post.username = userName
-      this.postService.createPost(this.post).subscribe({
+
+      const formData = new FormData()
+      formData.append('title', this.post.title);
+      formData.append('content', this.post.content);
+      formData.append('topic', this.post.topic);
+      formData.append('image', this.selectedImage);
+
+      this.postService.createPost(formData).subscribe({
         next: (response) => {
           console.log('Пост успешно создан:', response)
         },
@@ -36,6 +50,5 @@ export class CreatePostComponent {
     } else {
       console.error("Войдите в аккаунт")
     }
-    
   }
 }
