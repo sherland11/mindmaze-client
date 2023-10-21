@@ -32,8 +32,8 @@ export class PostService {
     return this.http.post<Post>(this.apiUrl, postData)
   }
 
-  updatePost(updatedPost: Post): Observable<Post> {
-    return this.http.put<Post>(`${this.apiUrl}/${updatedPost._id}`, updatedPost);
+  updatePost(updatedPost: FormData): Observable<Post> {
+    return this.http.put<Post>(`${this.apiUrl}/${updatedPost.get('_id')}`, updatedPost);
   }
 
   likePost(postId: string, username: string): Observable<Post> {

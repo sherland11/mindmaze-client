@@ -16,7 +16,8 @@ export class EditPostComponent implements OnInit {
     topic: '', 
     username: '',
     likes: [], 
-    date: new Date() };
+    date: new Date() 
+  };
 
   constructor(
     private route: ActivatedRoute,
@@ -45,8 +46,23 @@ export class EditPostComponent implements OnInit {
       })
     }
 
+    onFileSelected(event: any) {
+      const file = event.target.files[0];
+      if (file) {
+        this.editedPost.image = file;
+      }
+    }
+
     onSubmit(): void {
-      this.postService.updatePost(this.editedPost).subscribe({
+      const formData = new FormData()
+      formData.append('_id', this.editedPost._id as string)
+      formData.append('title', this.editedPost.title);
+      formData.append('content', this.editedPost.content);
+      formData.append('topic', this.editedPost.topic);
+      formData.append('username', this.editedPost.username)
+      formData.append('date', String(this.editedPost.date))
+      formData.append('image', this.editedPost.image as any);
+      this.postService.updatePost(formData).subscribe({
         next: () => {
           this.router.navigate(['/post', this.editedPost._id])
         },

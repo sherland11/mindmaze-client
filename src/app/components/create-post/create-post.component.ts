@@ -37,6 +37,8 @@ export class CreatePostComponent {
       formData.append('title', this.post.title);
       formData.append('content', this.post.content);
       formData.append('topic', this.post.topic);
+      formData.append('username', this.post.username)
+      formData.append('date', String(this.post.date))
       formData.append('image', this.selectedImage);
 
       this.postService.createPost(formData).subscribe({

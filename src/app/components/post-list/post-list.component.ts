@@ -40,7 +40,7 @@ export class PostListComponent implements OnInit {
 
     this.searchForm.valueChanges
     .pipe(
-      debounceTime(300),
+      debounceTime(500),
       switchMap(() => this.postService.searchPosts(this.searchForm.value.searchTerm, this.searchForm.value.topic))
     )
     .subscribe({
