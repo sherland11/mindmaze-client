@@ -14,7 +14,7 @@ import { PostService } from 'src/app/services/post.service';
 export class PostDetailComponent implements OnInit {
   post: Post | undefined;
   comments: Comment[] = [];
-  newComment: Comment = { postId: '', author: '', text: '', date: new Date() }
+  newComment: Comment = { postId: '',postTitle: '', author: '', text: '', date: new Date() }
   isLiked: boolean = false
   imageSrc: string = ''
 
@@ -63,11 +63,12 @@ export class PostDetailComponent implements OnInit {
       if (userData) {
         this.newComment.author = JSON.parse(userData).username
         this.newComment.postId = this.post._id;
+        this.newComment.postTitle = this.post.title;
         this.newComment.date = new Date();
         this.commentService.addComment(this.newComment).subscribe({
           next: (comment) => {
             this.comments.push(comment)
-            this.newComment = { postId: '', author: '', text: '', date: new Date() }
+            this.newComment = { postId: '',postTitle: '', author: '', text: '', date: new Date() }
           },
           error: (error) => {
             console.error('Ошибка при добавлении комментария: ', error)

@@ -6,7 +6,7 @@
       <p class="post-detail__content">{{ post.content }}</p>
       <div class="post-detail__info">
         <a class="post-detail__author" [routerLink]="['/profile', post.username]"> {{ post.username }}</a>
-        <p class="post-detail__date">Дата: {{ post.date | date }}</p>
+        <p class="post-detail__date">{{ post.date | date }}</p>
       </div>
   </div>
 

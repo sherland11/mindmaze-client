@@ -3,10 +3,61 @@
     margin: 128px auto;
 }
 
+.user-profile__name {
+    font-size: 24px;
+    margin-bottom: 40px;
+}
+
 .user-profile__title {
     font-size: 36px;
     font-weight: 600;
     margin-bottom: 20px;
+}
+
+.user-profile__posts-title {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.user-profile__post {
+    background-color: #979aa8;
+    padding: 20px 24px;
+    margin-bottom: 20px;
+    text-decoration: none;
+}
+
+.user-profile__post-title {
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+.user-profile__post a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.user-profile__comments-title {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.user-profile__comments a {
+    text-decoration: none;
+    font-size: 20px;
+    color: inherit;
+}
+
+.user-profile__comment-text {
+    margin-bottom: 5px;
+}
+
+.user-profile__comment-postTitle {
+    font-size: 14px;
+    font-weight: 300;
+    margin-bottom: 10px;
 }
 
 .user-pfofile__not-found {

@@ -23,6 +23,10 @@ export class PostService {
   getPostById(id: string): Observable<Post> {
     return this.http.get<Post>(`${this.apiUrl}/${id}`)
   }
+  
+  getPostTitle(postId: string): Observable<string> {
+    return this.http.get<string>(`${this.apiUrl}/title/${postId}`)
+  }
 
   getPostImage(imagePath: string): string {
     return `${this.apiUrl}/images/${imagePath}`
