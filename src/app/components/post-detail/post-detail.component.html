@@ -31,7 +31,7 @@
     </form>
     <ul>
       <li class="post-detail__comment" *ngFor="let comment of comments">
-        <div class="post-detail__comment-author">{{ comment.author }}</div> 
+        <a [routerLink]="['/profile', comment.author]" class="post-detail__comment-author">{{ comment.author }}</a> 
         <div class="post-detail__comment-text">{{ comment.text }}</div>
       </li>
     </ul>

@@ -91,9 +91,15 @@
 }
 
 .post-detail__comment-author {
-    margin-bottom: 10px;
+    color: rgb(85, 85, 85);
+    transition: color ease 200ms;
+}
+
+.post-detail__comment-author:hover {
+    color: #000000;
 }
 
 .post-detail__comment-text {
     font-size: 18px;
+    margin-top: 10px;
 }
