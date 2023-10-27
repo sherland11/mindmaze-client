@@ -16,4 +16,7 @@
       </div>
       <button class="submit-button" type="submit">Редактировать пост</button>
   </form>
+  <div class="edit-post__error">
+    <div *ngIf="formError">Заполните все поля</div>
+  </div>
 </div>

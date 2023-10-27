@@ -2,7 +2,7 @@
     <form class="create-post__form" (submit)="onSubmit()">
         <input type="text" id="title" name="title" placeholder="Заголовок" [(ngModel)]="post.title" required>
         <textarea id="content" name="content" placeholder="Текст" [(ngModel)]="post.content" required></textarea>
-        <select id="topic" name="topic" [(ngModel)]="post.topic">
+        <select id="topic" name="topic" [(ngModel)]="post.topic" required="">
             <option value="">Выбрать тему</option>
             <option value="природа">Природа</option>
             <option value="погода">Погода</option>
@@ -12,6 +12,10 @@
             <option value="общество">Общество</option>
         </select>
         <input type="file" id="image" (change)="onFileSelected($event)" accept="image/*">
-        <button class="submit-button" type="submit">Создать пост</button>
+        <button class="create-post__submit submit-button" type="submit">Создать пост</button>
     </form>
+    <div class="create-post__error">
+        <div *ngIf="errorAccount">Войдите в аккаунт</div>
+        <div *ngIf="errorForm">Заполните все поля</div>
+    </div>
 </div>

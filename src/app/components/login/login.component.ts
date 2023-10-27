@@ -9,16 +9,19 @@ import { AuthService } from 'src/app/services/auth.service';
 export class LoginComponent {
   username: string = ''
   password: string = ''
+  loginError: boolean = false
 
   constructor(private authService: AuthService) {}
 
   onSubmit(): void {
+
     this.authService.login(this.username, this.password).subscribe({
       next: (response) => {
         this.handleLoginResponse(response)
       },
       error: (error) => {
         console.error("Ошибка при отправке запроса: ", error)
+        this.loginError = true
       }
     })
   }
@@ -33,6 +36,7 @@ export class LoginComponent {
     } else {
       console.error(response)
       console.error("Ошибка при входе: ", response.message)
+      this.loginError = true
     }
   }
 }

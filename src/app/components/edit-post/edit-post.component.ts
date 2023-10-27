@@ -19,6 +19,8 @@ export class EditPostComponent implements OnInit {
     date: new Date() 
   };
 
+  formError: boolean = false
+
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -55,21 +57,25 @@ export class EditPostComponent implements OnInit {
 
     onSubmit(): void {
       const formData = new FormData()
-      formData.append('_id', this.editedPost._id as string)
-      formData.append('title', this.editedPost.title);
-      formData.append('content', this.editedPost.content);
-      formData.append('topic', this.editedPost.topic);
-      formData.append('username', this.editedPost.username)
-      formData.append('date', String(this.editedPost.date))
-      formData.append('image', this.editedPost.image as any);
-      this.postService.updatePost(formData).subscribe({
-        next: () => {
-          this.router.navigate(['/post', this.editedPost._id])
-        },
-        error: (error) => {
-          console.error(error)
-        }
-      })
+      if (this.editedPost.title && this.editedPost.content && this.editedPost.topic && this.editedPost.image) {
+        formData.append('_id', this.editedPost._id as string)
+        formData.append('title', this.editedPost.title);
+        formData.append('content', this.editedPost.content);
+        formData.append('topic', this.editedPost.topic);
+        formData.append('username', this.editedPost.username)
+        formData.append('date', String(this.editedPost.date))
+        formData.append('image', this.editedPost.image as any);
+        this.postService.updatePost(formData).subscribe({
+          next: () => {
+            this.router.navigate(['/post', this.editedPost._id])
+          },
+          error: (error) => {
+            console.error(error)
+          }
+        })
+      } else {
+        this.formError = true
+      }
     }
 }
 

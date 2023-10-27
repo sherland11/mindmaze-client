@@ -17,6 +17,8 @@ export class PostDetailComponent implements OnInit {
   newComment: Comment = { postId: '',postTitle: '', author: '', text: '', date: new Date() }
   isLiked: boolean = false
   imageSrc: string = ''
+  loginCommentError: boolean = false
+  emptyCommentError: boolean = false
 
   constructor(
     private route: ActivatedRoute,
@@ -59,6 +61,7 @@ export class PostDetailComponent implements OnInit {
 
   addComment(): void {
     if (this.post &&  this.newComment.text) {
+      this.emptyCommentError = false
       const userData = localStorage.getItem('user')
       if (userData) {
         this.newComment.author = JSON.parse(userData).username
@@ -75,9 +78,11 @@ export class PostDetailComponent implements OnInit {
           }
         })
       } else {
-        console.error("Войдите в аккаунт")
+        console.error("Ошибка при добавлении комментария: пользователь не вошел в аккаунт")
+        this.loginCommentError = true
       }
-      
+    } else {
+      this.emptyCommentError = true
     }
   }
 

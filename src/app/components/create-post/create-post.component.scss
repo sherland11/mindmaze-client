@@ -28,3 +28,13 @@
     padding: 10px;
     margin-bottom: 40px;
 }
+
+.create-post__error {
+    margin-top: 20px;
+}
+
+.create-post__error div {
+    font-size: 24px;
+    color: #ff0000;
+    font-weight: 600;
+}

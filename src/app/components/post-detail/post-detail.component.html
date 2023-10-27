@@ -28,6 +28,10 @@
       <div class="post-detailt__comments-title">Комментарии</div>
       <textarea class="post-detail__comment-textarea" id="text" name="text" placeholder="Комментарий" [(ngModel)]="newComment.text" required></textarea>
       <button class="post-detail__submit" type="submit">Добавить комментарий</button>
+      <div class="post-detail__comments-errors">
+        <div *ngIf="loginCommentError">Войдите в аккаунт, чтобы писать комментарии</div>
+        <div *ngIf="emptyCommentError">Комментарий не может быть пустым</div>
+      </div>
     </form>
     <ul>
       <li class="post-detail__comment" *ngFor="let comment of comments">

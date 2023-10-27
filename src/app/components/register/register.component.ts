@@ -10,14 +10,19 @@ export class RegisterComponent {
   username: string = ''
   password: string = ''
   confirmPassword: string = ''
+  resetPasswordError: boolean = false
+  usernameError: boolean = false
 
   constructor(private authService: AuthService) {}
 
   onSubmit(): void {
     if (this.password !== this.confirmPassword) {
       console.error('Пароли не совпадают')
+      this.resetPasswordError = true
       return
     }
+
+    this.resetPasswordError = false
 
     this.authService.register(this.username, this.password).subscribe({
       next: (response) => {
@@ -35,6 +40,7 @@ export class RegisterComponent {
       console.log('Пользователь успешно зарегистрирован:', response.message);
     } else {
       console.error('Ошибка при регистрации:', response.message);
+      if (!this.resetPasswordError) this.usernameError = true
     }
   }
 }

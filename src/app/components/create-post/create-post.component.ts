@@ -17,6 +17,8 @@ export class CreatePostComponent {
     date: new Date()
   }
   selectedImage: any
+  errorAccount: boolean = false
+  errorForm: boolean = false
 
   constructor(private postService: PostService) {}
 
@@ -34,23 +36,28 @@ export class CreatePostComponent {
       this.post.username = userName
 
       const formData = new FormData()
-      formData.append('title', this.post.title);
-      formData.append('content', this.post.content);
-      formData.append('topic', this.post.topic);
-      formData.append('username', this.post.username)
-      formData.append('date', String(this.post.date))
-      formData.append('image', this.selectedImage);
+      if (this.post.title && this.post.content && this.post.topic && this.selectedImage) {
+        formData.append('title', this.post.title);
+        formData.append('content', this.post.content);
+        formData.append('topic', this.post.topic);
+        formData.append('username', this.post.username)
+        formData.append('date', String(this.post.date))
+        formData.append('image', this.selectedImage);
 
-      this.postService.createPost(formData).subscribe({
-        next: (response) => {
-          console.log('Пост успешно создан:', response)
-        },
-        error: (error) => {
-          console.error(error)
-        }
-      })
+        this.postService.createPost(formData).subscribe({
+          next: (response) => {
+            console.log('Пост успешно создан:', response)
+          },
+          error: (error) => {
+            console.error(error)
+          }
+        })
+      } else {
+        this.errorForm = true
+      }
     } else {
       console.error("Войдите в аккаунт")
+      this.errorAccount = true
     }
   }
 }

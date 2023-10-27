@@ -4,5 +4,8 @@
         <input type="password" id="password" name="password" placeholder="Пароль" [(ngModel)]="password" required>
         <button class="submit-button" type="submit">Войти</button>
     </form>
+    <div class="login__errors">
+        <div *ngIf="loginError">Неверный логин или пароль</div>
+    </div>
 </div>
 
