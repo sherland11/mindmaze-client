@@ -13,6 +13,7 @@ import { PostService } from 'src/app/services/post.service';
 export class PostListComponent implements OnInit {
   posts: Post[] = []
   searchForm: FormGroup
+  sortBy: 'new' | 'popular' = 'new'
 
   constructor(
     private postService: PostService, 
@@ -41,7 +42,7 @@ export class PostListComponent implements OnInit {
     this.searchForm.valueChanges
     .pipe(
       debounceTime(500),
-      switchMap(() => this.postService.searchPosts(this.searchForm.value.searchTerm, this.searchForm.value.topic))
+      switchMap(() => this.postService.searchPosts(this.searchForm.value.searchTerm, this.searchForm.value.topic, this.sortBy))
     )
     .subscribe({
         next: () => {
@@ -58,7 +59,7 @@ export class PostListComponent implements OnInit {
    }
 
    private searchPosts(): void {
-    this.postService.searchPosts(this.searchForm.value.searchTerm, this.searchForm.value.topic).subscribe({
+    this.postService.searchPosts(this.searchForm.value.searchTerm, this.searchForm.value.topic, this.sortBy).subscribe({
       next: (data) => {
         this.posts = data
       },
@@ -66,5 +67,17 @@ export class PostListComponent implements OnInit {
         console.error(error)
       }
     })
+   }
+
+   sortPosts(sortingBy: 'new' | 'popular') {
+      this.sortBy = sortingBy
+      this.postService.searchPosts(this.searchForm.value.searchTerm, this.searchForm.value.topic, this.sortBy).subscribe({
+        next: (data) => {
+          this.posts = data
+        },
+        error: (error) => {
+          console.error(error)
+        }
+      })
    }
 }

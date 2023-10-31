@@ -26,6 +26,7 @@ export class CreatePostComponent {
     const file = event.target.files[0];
     if (file) {
       this.selectedImage = file;
+      console.log(this.selectedImage)
     }
   }
 

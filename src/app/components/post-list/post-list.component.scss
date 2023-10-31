@@ -58,3 +58,23 @@
 
     }
 }
+
+.post-list__sort-buttons {
+    display: flex;
+    justify-content: space-between;
+    width: 50%;
+    margin: 10px auto;
+}
+
+.post-list__sort-buttons button {
+    background: none;
+    outline: none;
+    border: 0;
+    font-size: 24px;
+    color: #c11fc7;
+    transition: border-bottom 500ms ease;
+}
+
+.active {
+    border-bottom: #c11fc7 solid 2px !important;
+}

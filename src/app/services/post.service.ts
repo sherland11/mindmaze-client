@@ -15,8 +15,8 @@ export class PostService {
     return this.http.get<Post[]>(this.apiUrl)
   }
 
-  searchPosts(searchTerm: string, topic: string): Observable<Post[]> {
-    const params = { searchTerm, topic }
+  searchPosts(searchTerm: string, topic: string, sortBy: string): Observable<Post[]> {
+    const params = { searchTerm, topic, sortBy }
     return this.http.get<Post[]>(`${this.apiUrl}/search`, { params }) 
   }
 
