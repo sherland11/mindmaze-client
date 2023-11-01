@@ -13,7 +13,7 @@ import { PostService } from 'src/app/services/post.service';
 export class PostListComponent implements OnInit {
   posts: Post[] = []
   searchForm: FormGroup
-  sortBy: 'new' | 'popular' = 'new'
+  sortBy: 'new' | 'popular' = 'popular'
 
   constructor(
     private postService: PostService, 

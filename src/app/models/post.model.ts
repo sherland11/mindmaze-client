@@ -2,7 +2,7 @@ export interface Post {
     _id?: string;
     title: string;
     content: string;
-    date: Date;
+    date: number;
     topic: string;
     username: string;
     likes: string[]

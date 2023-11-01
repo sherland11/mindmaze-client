@@ -16,7 +16,7 @@ export class EditPostComponent implements OnInit {
     topic: '', 
     username: '',
     likes: [], 
-    date: new Date() 
+    date: new Date().getTime() 
   };
 
   formError: boolean = false

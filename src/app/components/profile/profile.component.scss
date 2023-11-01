@@ -9,6 +9,52 @@
     margin-bottom: 20px;
 }
 
+.profile__posts-title {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.profile__post {
+    background-color: #979aa8;
+    padding: 20px 24px;
+    margin-bottom: 20px;
+    text-decoration: none;
+}
+
+.profile__post-title {
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+.profile__post a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.profile__comments-title {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.profile__comments a {
+    text-decoration: none;
+    font-size: 20px;
+    color: inherit;
+}
+
+.profile__comment-text {
+    margin-bottom: 5px;
+}
+
+.profile__comment-postTitle {
+    font-size: 14px;
+    font-weight: 300;
+    margin-bottom: 10px;
+}
+
 .profile__error {
     display: flex;
     flex-direction: column;

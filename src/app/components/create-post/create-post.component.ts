@@ -14,7 +14,7 @@ export class CreatePostComponent {
     topic: '',
     username: '',
     likes: [],
-    date: new Date()
+    date: new Date().getTime()
   }
   selectedImage: any
   errorAccount: boolean = false

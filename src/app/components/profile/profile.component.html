@@ -1,21 +1,21 @@
 <div class="profile">
     <div class="profile__user" *ngIf="user">
-        <p class="profile__title">Профиль пользователя<p>
+        <p class="profile__title">Мойц профиль<p>
         <p>{{ user.username }}</p>
-        <p class="user-profile__posts-title">Посты</p>
-        <div class="user-profile__posts" *ngFor="let post of posts">
-            <div class="user-profile__post">
+        <p class="profile__posts-title">Посты</p>
+        <div class="profile__posts" *ngFor="let post of posts">
+            <div class="profile__post">
                 <a [routerLink]="['/post', post._id]">
-                    <div class="user-profile__post-title">{{ post.title }}</div>
-                    <div class="user-profile__post-text">{{ post.content.slice(0, 79) }}</div>
+                    <div class="profile__post-title">{{ post.title }}</div>
+                    <div class="profile__post-text">{{ post.content.slice(0, 79) }}</div>
                 </a>  
             </div>
         </div>
-        <div class="user-profile__comments-title">Комментарии: </div>
-        <div class="user-profile__comments" *ngFor="let comment of comments">
-            <a class="user-profile__comment" [routerLink]="['/post', comment.postId]">
-                <div class="user-profile__comment-text">{{ comment.text }}</div>
-                <div class="user-profile__comment-postTitle">К посту: {{ comment.postTitle }}</div>
+        <div class="profile__comments-title">Комментарии: </div>
+        <div class="profile__comments" *ngFor="let comment of comments">
+            <a class="profile__comment" [routerLink]="['/post', comment.postId]">
+                <div class="profile__comment-text">{{ comment.text }}</div>
+                <div class="profile__comment-postTitle">К посту: {{ comment.postTitle }}</div>
             </a>
         </div>
     </div>

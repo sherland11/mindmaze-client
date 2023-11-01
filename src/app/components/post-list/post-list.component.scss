@@ -68,13 +68,13 @@
 
 .post-list__sort-buttons button {
     background: none;
-    outline: none;
     border: 0;
+    border-bottom: 1px solid #00000000;
     font-size: 24px;
     color: #c11fc7;
-    transition: border-bottom 500ms ease;
+    transition: all 500ms ease;
 }
 
 .active {
-    border-bottom: #c11fc7 solid 2px !important;
+    border-bottom: #c11fc7 solid 1px !important;
 }
