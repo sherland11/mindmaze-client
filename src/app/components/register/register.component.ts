@@ -12,8 +12,17 @@ export class RegisterComponent {
   confirmPassword: string = ''
   resetPasswordError: boolean = false
   usernameError: boolean = false
+  selectedImage: any
 
   constructor(private authService: AuthService) {}
+
+  onFileSelected(event: any) {
+    const file = event.target.files[0];
+    if (file) {
+      this.selectedImage = file;
+      console.log(this.selectedImage)
+    }
+  }
 
   onSubmit(): void {
     if (this.password !== this.confirmPassword) {
@@ -24,7 +33,7 @@ export class RegisterComponent {
 
     this.resetPasswordError = false
 
-    this.authService.register(this.username, this.password).subscribe({
+    this.authService.register(this.username, this.password, this.selectedImage).subscribe({
       next: (response) => {
         this.handleRegistrationResponse(response)
       },

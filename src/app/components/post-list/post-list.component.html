@@ -27,5 +27,12 @@
                 <div class="post-list__content">{{ post.content.slice(0, 79) }}</div>
             </div>
         </a>
+        <div class="post-list__like">
+            <button class="post-list__like-btn" (click)="toggleLike(post?._id, post.likes)">
+              <img *ngIf="isLike(post.likes)" src="../../../assets/like-fill.svg" alt="лайк">
+              <img *ngIf="!isLike(post.likes)" src="../../../assets/like.svg" alt="лайк">
+            </button>
+            <div class="post-list__like-quantity"> {{ post?.likes?.length }} </div>
+        </div>
     </div>
 </div>
