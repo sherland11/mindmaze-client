@@ -9,6 +9,45 @@
     margin-bottom: 20px;
 }
 
+.profile__user {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.profile__avatar {
+    width: 128px;
+    height: 128px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-right: 50px;
+}
+
+.profile__username {
+    font-size: 24px;
+}
+
+.profile__show-mode {
+    margin-bottom: 50px;
+}
+
+.profile__show-mode button {
+    border: none;
+    background: #ffffff;
+    margin-right: 28px;
+    cursor: pointer;
+    height: 40px;
+    line-height: 40px;
+    padding: 0 14px;
+    border-radius: 999px;
+    transition: background-color 400ms ease;
+}
+
+.profile__show-mode-active {
+    background-color: #cccccc !important;
+}
+
+
 .profile__posts-title {
     font-size: 24px;
     font-weight: 600;

@@ -1,22 +1,49 @@
 <div class="profile">
-    <div class="profile__user" *ngIf="user">
+    <div class="profile__content" *ngIf="user">
         <p class="profile__title">Мой профиль<p>
-        <p>{{ user.username }}</p>
-        <p class="profile__posts-title">Посты</p>
-        <div class="profile__posts" *ngFor="let post of posts">
-            <div class="profile__post">
-                <a [routerLink]="['/post', post._id]">
-                    <div class="profile__post-title">{{ post.title }}</div>
-                    <div class="profile__post-text">{{ post.content.slice(0, 79) }}</div>
-                </a>  
+        <div class="profile__user">
+            <img class="profile__avatar" [src]="'http://localhost:3000/posts/images/' + user.avatar" alt="Аватарка">
+            <p class="profile__username">{{ user.username }}</p>
+        </div>
+        <div class="profile__show-mode">
+            <button 
+                [ngClass]="{'profile__show-mode-active': showAll}"
+                (click)="setShowAll()"
+            >
+                Обзор
+            </button>
+            <button 
+                [ngClass]="{'profile__show-mode-active': showPosts}"
+                (click)="setShowPosts()"
+            >
+                Посты
+            </button>
+            <button 
+                [ngClass]="{'profile__show-mode-active': showComments}"
+                (click)="setShowComments()"
+            >
+                Комментарии
+            </button>
+        </div>
+        <p *ngIf="showAll || showPosts" class="profile__posts-title">Посты</p>
+        <div *ngIf="showAll || showPosts">
+            <div class="profile__posts" *ngFor="let post of posts">
+                <div class="profile__post">
+                    <a [routerLink]="['/post', post._id]">
+                        <div class="profile__post-title">{{ post.title }}</div>
+                        <div class="profile__post-text">{{ post.content.slice(0, 79) }}</div>
+                    </a>  
+                </div>
             </div>
         </div>
-        <div class="profile__comments-title">Комментарии: </div>
-        <div class="profile__comments" *ngFor="let comment of comments">
-            <a class="profile__comment" [routerLink]="['/post', comment.postId]">
-                <div class="profile__comment-text">{{ comment.text }}</div>
-                <div class="profile__comment-postTitle">К посту: {{ comment.postTitle }}</div>
-            </a>
+        <div *ngIf="showAll || showComments" class="profile__comments-title">Комментарии</div>
+        <div *ngIf="showAll || showComments">
+            <div class="profile__comments" *ngFor="let comment of comments">
+                <a class="profile__comment" [routerLink]="['/post', comment.postId]">
+                    <div class="profile__comment-text">{{ comment.text }}</div>
+                    <div class="profile__comment-postTitle">К посту: {{ comment.postTitle }}</div>
+                </a>
+            </div>
         </div>
     </div>
     <div class="profile__error" *ngIf="!user">

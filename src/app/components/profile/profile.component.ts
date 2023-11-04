@@ -13,6 +13,9 @@ export class ProfileComponent implements OnInit {
   user: any
   posts: Post[] = []
   comments: Comment[] = []
+  showAll: boolean = true
+  showPosts: boolean = false
+  showComments: boolean = false
 
   constructor(
     private postService: PostService,
@@ -42,5 +45,23 @@ export class ProfileComponent implements OnInit {
         console.error(error)
       }
     })
+  }
+
+  setShowAll() {
+    this.showAll = true
+    this.showPosts = false
+    this.showComments = false
+  }
+
+  setShowPosts() {
+    this.showAll = false
+    this.showPosts = true
+    this.showComments = false
+  }
+
+  setShowComments() {
+    this.showAll = false
+    this.showPosts = false
+    this.showComments = true
   }
 }
