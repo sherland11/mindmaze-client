@@ -20,6 +20,7 @@ import { AsideComponent } from './components/aside/aside.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatListModule } from '@angular/material/list';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ import { MatListModule } from '@angular/material/list';
     BrowserAnimationsModule,
     MatExpansionModule,
     MatListModule,
+    MatIconModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

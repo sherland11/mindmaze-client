@@ -3,15 +3,6 @@
         <form [formGroup]="searchForm" (ngSubmit)="onSearchInput()">
             <div class="post-list__form-group">
                 <input class="post-list__searchTerm" type="text" formControlName="searchTerm" placeholder="Найти статью">
-                <select class="post-list__topic" formControlName="topic">
-                    <option value="">Тема</option>
-                    <option value="природа">Природа</option>
-                    <option value="погода">Погода</option>
-                    <option value="политика">Политика</option>
-                    <option value="технологии">Технологии</option>
-                    <option value="культура">Культура</option>
-                    <option value="общество">Общество</option>
-                </select>
             </div>
         </form>
     </div>
@@ -29,8 +20,8 @@
         </a>
         <div class="post-list__like">
             <button class="post-list__like-btn" (click)="toggleLike(post?._id, post.likes)">
-              <img *ngIf="isLike(post.likes)" src="../../../assets/like-fill.svg" alt="лайк">
-              <img *ngIf="!isLike(post.likes)" src="../../../assets/like.svg" alt="лайк">
+                <mat-icon class="post-list__like-icon" *ngIf="!isLike(post.likes)">favorite_border</mat-icon>
+                <mat-icon class="post-list__like-icon" *ngIf="isLike(post.likes)">favorite</mat-icon>
             </button>
             <div class="post-list__like-quantity"> {{ post?.likes?.length }} </div>
         </div>

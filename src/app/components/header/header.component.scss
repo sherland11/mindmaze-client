@@ -5,7 +5,8 @@
   height: 64px;
   display: flex;
   justify-content: center;
-  border-bottom: 1px solid #000000;
+  border-bottom: 1px solid var(--border-color);
+  background-color: var(--main-background-color);
 }
 
 .header__navbar {
@@ -15,7 +16,7 @@
   width: 95%;
   a {
     margin-right: 10px;
-    color: #000000;
+    color: var(--main-color);
     text-decoration: none;
     font-size: 18px;
   }
@@ -24,48 +25,55 @@
   }
 }
 
-.profile {
+.header__profile {
   position: relative;
   display: flex;
 }
 
-.profile__dropdown {
+.header__profile-dropdown {
   cursor: pointer;
   font-size: 18px;
   color: #c9cccf;
   padding: 10px;
 }
 
-.profile__menu {
+.header__profile-avatar {
+  object-fit: cover;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+}
+
+.header__profile-menu {
   display: none;
   opacity: 0;
   position: absolute;
   top: 90%;
-  left: 0%;
+  right: 10%;
   z-index: 1;
   padding: 10px 20px;
   background-color: #44464d;
-  border: 1px solid #000000;
+  border: 1px solid var(--border-color);
   border-radius: 12px; 
   transition: 500ms ease all;
   width: 150px;
 }
 
-.profile__menu a {
+.header__profile-menu a {
   margin-bottom: 10px;
 }
 
-.profile__menu button {
+.header__profile-menu button {
   width: 50%;
 }
 
-.profile__dropdown:hover + .profile__menu {
+.header__profile-dropdown:hover + .header__profile-menu {
   display: flex;
   flex-direction: column;
   opacity: 1;
 }
 
-.profile__menu:hover {
+.header__profile-menu:hover {
   display: flex;
   flex-direction: column;
   opacity: 1;

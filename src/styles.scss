@@ -1,3 +1,11 @@
+:root {
+	--main-background-color: #0b1416ff;
+	--main-color: #daffffff;
+	--border-color: #242c2e;
+	--text-input-background: #1a282d;
+	--hover-color: #223237;
+}
+
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -23,6 +31,7 @@ footer, header, hgroup, menu, nav, section {
 }
 body {
 	line-height: 1;
+	background-color: var(--main-background-color);
 }
 ol, ul {
 	list-style: none;

@@ -1,17 +1,14 @@
 <header class="header">
-        <nav class="header__navbar">
-                <a [routerLink]="['/']" class="header__title">MindMaze</a>
-                <a [routerLink]="['/create-post']">Написать пост</a>
-                <div>
-                        <a *ngIf="!isUserLogIn" [routerLink]="['/register']">Регистрация</a>
-                        <a *ngIf="!isUserLogIn" [routerLink]="['/login']">Вход</a>
-                </div>
-                <div class="profile" *ngIf="isUserLogIn">
-                        <div class="profile__dropdown">Профиль</div>
-                        <div class="profile__menu">
-                                <a [routerLink]="['/profile']">Мой профиль</a>
-                                <button (click)="logout()">Выйти</button>
-                        </div>
-                </div>
-        </nav>
+    <nav class="header__navbar">
+        <a [routerLink]="['/']" class="header__title">MindMaze</a>
+        <div>
+            <a *ngIf="!isUserLogIn" [routerLink]="['/register']">Регистрация</a>
+            <a *ngIf="!isUserLogIn" [routerLink]="['/login']">Вход</a>
+        </div>
+        <div class="header__profile" *ngIf="isUserLogIn">
+            <a [routerLink]="['/profile']">
+                <img class="header__profile-avatar" [src]="'http://localhost:3000/posts/images/' + user.avatar" alt="Аватарка">
+            </a>                        
+        </div>
+    </nav>
 </header>

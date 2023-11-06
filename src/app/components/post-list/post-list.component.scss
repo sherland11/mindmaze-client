@@ -13,24 +13,22 @@
     }
 
     .post-list__searchTerm {
-        width: 70%;
-        margin-right: 20px;
-        padding: 10px;
+        width: 100%;
+        padding: 15px;
         font-size: 20px;
+        border-radius: 999px;
+        color: var(--main-color);
+        background-color: var(--text-input-background);
+        box-shadow: 0;
+        border: 0;
+        caret-color: var(--main-color);
     }
-
-    .post-list__topic {
-        width: 25%;
-        padding: 10px;
-        font-size: 20px;
-    }
-
-
 
     .post-list__post {
         padding: 20px 24px;
         margin-bottom: 20px;
         text-decoration: none;
+        color: var(--main-color)
         
     }
 
@@ -68,9 +66,9 @@
 .post-list__sort-buttons button {
     background: none;
     border: 0;
-    border-bottom: 1px solid #00000000;
+    border-bottom: 0px solid #00000000;
     font-size: 24px;
-    color: #c11fc7;
+    color: var(--main-color);
     transition: all 500ms ease;
 }
 
@@ -92,9 +90,11 @@
     align-items: center;
 }
 
-.post-list__like-btn img {
+.post-list__like-icon {
+    color: var(--main-color);
     width: 32px;
     height: 32px;
+    font-size: 32px;
 }
 
 .post-list__like-quantity {
@@ -102,5 +102,5 @@
 }
 
 .active {
-    border-bottom: #c11fc7 solid 1px !important;
+    border-bottom: var(--border-color) solid 1px !important;
 }
