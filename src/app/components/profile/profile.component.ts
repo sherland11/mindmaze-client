@@ -64,4 +64,66 @@ export class ProfileComponent implements OnInit {
     this.showPosts = false
     this.showComments = true
   }
+
+  isLike(postLikes: string[]) {
+    const userdata = localStorage.getItem('user')
+    if (userdata) {
+      const username = JSON.parse(userdata).username
+      if (postLikes.includes(username)) {
+        return true
+      } else {
+        return false
+      }
+    } else {
+      return false
+    }
+  }
+
+  likePost(postId: string) {
+    const userData = localStorage.getItem('user')
+    if (userData) {
+      const username = JSON.parse(userData).username
+      this.postService.likePost(postId, username).subscribe({
+        next: (updatedPost) => {
+          const index = this.posts.findIndex(post => post._id === updatedPost._id)
+          this.posts[index] = updatedPost
+        },
+        error: (error) => {
+          console.error(error)
+        }
+      })
+    } else {
+      console.error("Ошибка! Войдите в аккаунт")
+    }
+  }
+
+  deleteLike(postId: string) {
+    const userData = localStorage.getItem('user')
+    if (userData) {
+      const username = JSON.parse(userData).username
+      this.postService.deleteLike(postId, username).subscribe({
+        next: (updatedPost) => {
+          const index = this.posts.findIndex(post => post._id === updatedPost._id)
+          this.posts[index] = updatedPost
+        },
+        error: (error) => {
+          console.error(error);
+        }
+      });
+    } else {
+      console.error('Ошибка! Войдите в аккаунт')
+    }
+  }
+
+  toggleLike(postId: string | undefined, postLikes: string[]) {
+    const userdata = localStorage.getItem('user')
+    if (postId && userdata) {
+      const username = JSON.parse(userdata).username
+      if (postLikes.includes(username)) {
+        this.deleteLike(postId)
+      } else {
+        this.likePost(postId)
+      }
+    }
+  }
 }

@@ -1,0 +1,13 @@
+.aside {
+    position: fixed;
+    height: 100%;
+    top: 64px;
+    left: 50%;
+    transform: translateX(-600px);
+    border-right: 1px solid #000000;
+    padding: 16px 16px 0 0;
+}
+
+.aside__home {
+    text-decoration: none;
+}

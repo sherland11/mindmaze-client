@@ -1,21 +1,21 @@
 .header {
   position: fixed;
   top: 0;
-  background-color: #44464d;
   width: 100%;
   height: 64px;
   display: flex;
   justify-content: center;
+  border-bottom: 1px solid #000000;
 }
 
 .header__navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 1280px;
+  width: 95%;
   a {
     margin-right: 10px;
-    color: #c9cccf;
+    color: #000000;
     text-decoration: none;
     font-size: 18px;
   }

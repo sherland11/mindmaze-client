@@ -2,8 +2,10 @@
         <nav class="header__navbar">
                 <a [routerLink]="['/']" class="header__title">MindMaze</a>
                 <a [routerLink]="['/create-post']">Написать пост</a>
-                <a *ngIf="!isUserLogIn" [routerLink]="['/register']">Регистрация</a>
-                <a *ngIf="!isUserLogIn" [routerLink]="['/login']">Вход</a>
+                <div>
+                        <a *ngIf="!isUserLogIn" [routerLink]="['/register']">Регистрация</a>
+                        <a *ngIf="!isUserLogIn" [routerLink]="['/login']">Вход</a>
+                </div>
                 <div class="profile" *ngIf="isUserLogIn">
                         <div class="profile__dropdown">Профиль</div>
                         <div class="profile__menu">

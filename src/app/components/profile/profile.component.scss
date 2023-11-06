@@ -55,21 +55,63 @@
 }
 
 .profile__post {
-    background-color: #979aa8;
-    padding: 20px 24px;
     margin-bottom: 20px;
     text-decoration: none;
-}
-
-.profile__post-title {
-    font-size: 20px;
-    font-weight: 500;
-    margin-bottom: 10px;
+    
 }
 
 .profile__post a {
     text-decoration: none;
     color: inherit;
+}
+
+.profile__title {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 30px;
+}
+
+.profile__post-image {
+    width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+    border-radius: 12px;
+}
+
+.profile__content {
+    font-size: 17px;
+
+}
+
+.profile__like {
+    display: flex;
+    align-items: center;
+    margin: 20px 0 30px 0;
+}
+
+.profile__like-btn {
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+    margin-right: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile__like-btn img {
+    width: 32px;
+    height: 32px;
+}
+
+.profile__like-quantity {
+    font-size: 20px;
+}
+
+.active {
+    border-bottom: #c11fc7 solid 1px !important;
 }
 
 .profile__comments-title {

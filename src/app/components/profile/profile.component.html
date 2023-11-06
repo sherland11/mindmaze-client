@@ -27,12 +27,20 @@
         </div>
         <p *ngIf="showAll || showPosts" class="profile__posts-title">Посты</p>
         <div *ngIf="showAll || showPosts">
-            <div class="profile__posts" *ngFor="let post of posts">
-                <div class="profile__post">
-                    <a [routerLink]="['/post', post._id]">
-                        <div class="profile__post-title">{{ post.title }}</div>
-                        <div class="profile__post-text">{{ post.content.slice(0, 79) }}</div>
-                    </a>  
+            <div *ngFor="let post of posts" class="profile__post">
+                <a [routerLink]="['/post', post._id]">
+                    <div class="profile__post-text">
+                        <div class="profile__title">{{ post.title }}</div>
+                        <img class="profile__post-image" [src]="'http://localhost:3000/posts/images/' + post.image"  alt="Картинка поста">
+                        <div class="profile__content">{{ post.content.slice(0, 79) }}</div>
+                    </div>
+                </a>
+                <div class="profile__like">
+                    <button class="profile__like-btn" (click)="toggleLike(post?._id, post.likes)">
+                      <img *ngIf="isLike(post.likes)" src="../../../assets/like-fill.svg" alt="лайк">
+                      <img *ngIf="!isLike(post.likes)" src="../../../assets/like.svg" alt="лайк">
+                    </button>
+                    <div class="profile__like-quantity"> {{ post?.likes?.length }} </div>
                 </div>
             </div>
         </div>

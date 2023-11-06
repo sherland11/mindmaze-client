@@ -16,6 +16,10 @@ import { ProfileByUsernameComponent } from './components/profile-by-username/pro
 import { CreatePostComponent } from './components/create-post/create-post.component';
 import { EditPostComponent } from './components/edit-post/edit-post.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { AsideComponent } from './components/aside/aside.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatListModule } from '@angular/material/list';
 
 @NgModule({
   declarations: [
@@ -30,14 +34,18 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
     ProfileByUsernameComponent,
     CreatePostComponent,
     EditPostComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    AsideComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    MatExpansionModule,
+    MatListModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
