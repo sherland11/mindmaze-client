@@ -1,26 +1,62 @@
 <div class="user-profile">
     <div class="user-profile__content" *ngIf="userData">
-        <p class="user-profile__title">Информация о пользователе</p>
-        <p class="user-profile__name">{{ userData.username }}</p>
-        <p class="user-profile__posts-title">Посты</p>
-        <div class="user-profile__posts" *ngFor="let post of posts">
-            <div class="user-profile__post">
-                <a [routerLink]="['/post', post._id]">
-                    <div class="user-profile__post-title">{{ post.title }}</div>
-                    <div class="user-profile__post-text">{{ post.content.slice(0, 79) }}</div>
-                </a>  
+        <div class="user-profile__user">
+            <div class="user-profile__user-info">
+                <img class="user-profile__avatar" [src]="'http://localhost:3000/posts/images/' + userData.avatar" alt="Аватарка">
+                <p class="user-profile__username">{{ userData.username }}</p>
             </div>
         </div>
-        <div class="user-profile__comments-title">Комментарии: </div>
-        <div class="user-profile__comments" *ngFor="let comment of comments">
-            <a class="user-profile__comment" [routerLink]="['/post', comment.postId]">
-                <div class="user-profile__comment-text">{{ comment.text }}</div>
-                <div class="user-profile__comment-postTitle">К посту: {{ comment.postTitle }}</div>
-            </a>
+        <div class="user-profile__show-mode">
+            <button 
+                [ngClass]="{'user-profile__show-mode-active': showAll}"
+                (click)="setShowAll()"
+            >
+                Обзор
+            </button>
+            <button 
+                [ngClass]="{'user-profile__show-mode-active': showPosts}"
+                (click)="setShowPosts()"
+            >
+                Посты
+            </button>
+            <button 
+                [ngClass]="{'user-profile__show-mode-active': showComments}"
+                (click)="setShowComments()"
+            >
+                Комментарии
+            </button>
+        </div>
+        <p *ngIf="showAll || showPosts" class="user-profile__title">Посты</p>
+        <div *ngIf="showAll || showPosts">
+            <div *ngFor="let post of posts" class="user-profile__post">
+                <a [routerLink]="['/post', post._id]">
+                    <div class="user-profile__post-text">
+                        <div class="user-profile__post-title">{{ post.title }}</div>
+                        <img class="user-profile__post-image" [src]="'http://localhost:3000/posts/images/' + post.image"  alt="Картинка поста">
+                        <div class="user-profile__content">{{ post.content.slice(0, 79) }}</div>
+                    </div>
+                </a>
+                <div class="user-profile__like">
+                    <button class="user-profile__like-btn" (click)="toggleLike(post?._id, post.likes)">
+                        <mat-icon class="user-profile__like-icon" *ngIf="!isLike(post.likes)">favorite_border</mat-icon>
+                        <mat-icon class="user-profile__like-icon" *ngIf="isLike(post.likes)">favorite</mat-icon>
+                    </button>
+                    <div class="user-profile__like-quantity"> {{ post?.likes?.length }} </div>
+                </div>
+            </div>
+        </div>
+        <div *ngIf="showAll || showComments" class="user-profile__comments-title">Комментарии</div>
+        <div *ngIf="showAll || showComments">
+            <div class="user-profile__comments" *ngFor="let comment of comments">
+                <a class="user-profile__comment" [routerLink]="['/post', comment.postId]">
+                    <div class="user-profile__comment-text">{{ comment.text }}</div>
+                    <div class="user-profile__comment-postTitle">К посту: {{ comment.postTitle }}</div>
+                </a>
+            </div>
         </div>
     </div>
-    
     <div class="user-pfofile__not-found" *ngIf="!userData">
         <div>Пользователь не найден</div>
     </div>
 </div>
+

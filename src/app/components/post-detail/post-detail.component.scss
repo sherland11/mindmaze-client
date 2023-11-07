@@ -1,6 +1,7 @@
 .post-detail {
     margin: 128px auto;
     width: 640px;
+    color: var(--text-color);
 }
 
 .post-detail a {
@@ -12,10 +13,11 @@
     font-weight: 600;
 }
 
-.post-detailt__image {
+.post-detail__image {
     width: 100%;
     height: auto;
     margin: 20px 0;
+    border-radius: 12px;
 }
 
 .post-detail__content {
@@ -27,6 +29,15 @@
     display: flex;
     justify-content: space-between;
     margin-bottom: 30px;
+}
+
+.post-detail__author {
+    color: var(--link-color);
+    transition: color 300ms ease;
+}
+
+.post-detail__author:hover {
+    color: var(--link-hover-color);
 }
 
 .post-detail__edit {
@@ -51,9 +62,11 @@
     align-items: center;
 }
 
-.post-detail__like-btn img {
+.post-detail__like-icon {
+    color: var(--main-color);
     width: 32px;
     height: 32px;
+    font-size: 32px;
 }
 
 .post-detail__like-quantity {
@@ -71,6 +84,17 @@
     margin-bottom: 30px;
 }
 
+.post-detail__edit a {
+    color: var(--text-color);
+    background-color: var(--button-secondary-background);
+    padding: 10px 20px;
+    border-radius: 999px;
+}
+
+.post-detail__edit a:hover {
+    text-decoration: underline;
+}
+
 .post-detail__form {
     display: flex;
     flex-direction: column;
@@ -83,6 +107,31 @@
     padding: 10px;
     font-size: 18px;
     height: 68px;
+    background-color: var(--text-input-background);
+    border: 0;
+    border-radius: 12px;
+    caret-color: var(--main-color);
+    color: var(--text-color);
+}
+
+.post-detail__comment-textarea:focus {
+    border: 0;
+    outline: 0;
+}
+
+.post-detail__comment-submit {
+    width: 200px;
+    height: 40px;
+    background-color: var(--main-background-color);
+    border: 1px solid var(--button-secondary-background);
+    border-radius: 12px;
+    color: var(--text-color);
+    cursor: pointer;
+    transition: all 300ms ease;
+}
+
+.post-detail__comment-submit:hover {
+    background-color: var(--button-secondary-background);
 }
 
 .post-detail__comment {
@@ -90,12 +139,12 @@
 }
 
 .post-detail__comment-author {
-    color: rgb(85, 85, 85);
+    color: var(--link-color);
     transition: color ease 200ms;
 }
 
 .post-detail__comment-author:hover {
-    color: #000000;
+    color: var(--link-hover-color);
 }
 
 .post-detail__comment-text {

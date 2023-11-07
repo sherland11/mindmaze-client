@@ -11,10 +11,11 @@
           <option value="культура">Культура</option>
           <option value="общество">Общество</option>
       </select>
-      <div>
-        <input type="file" [value]="editedPost.image" id="image" (change)="onFileSelected($event)" accept="image/*">
+      <div class="edit-post__input-file">
+        <label for="file">Выбрать изображение</label>
+        <input type="file" name="file" [value]="editedPost.image" id="image" (change)="onFileSelected($event)" accept="image/*">
       </div>
-      <button class="submit-button" type="submit">Редактировать пост</button>
+      <button class="edit-post__submit" type="submit">Редактировать пост</button>
   </form>
   <div class="edit-post__error">
     <div *ngIf="formError">Заполните все поля</div>

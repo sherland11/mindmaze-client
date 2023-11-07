@@ -11,8 +11,11 @@
             <option value="культура">Культура</option>
             <option value="общество">Общество</option>
         </select>
-        <input type="file" id="image" (change)="onFileSelected($event)" accept="image/*">
-        <button class="create-post__submit submit-button" type="submit">Создать пост</button>
+        <div class="create-post__input-file">
+            <label for="file">Выбрать изображение</label>
+            <input type="file" name="file" id="image" (change)="onFileSelected($event)" accept="image/*">
+        </div>
+        <button class="create-post__submit" type="submit">Создать пост</button>
     </form>
     <div class="create-post__error">
         <div *ngIf="errorAccount">Войдите в аккаунт</div>

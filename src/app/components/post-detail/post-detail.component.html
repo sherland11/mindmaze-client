@@ -2,24 +2,22 @@
 
   <div class="post-detail__post" *ngIf="post">
       <p class="post-detail__title">{{ post.title }}<p>
-      <img class="post-detailt__image" [src]="imageSrc" alt="">
+      <img class="post-detail__image" [src]="imageSrc" alt="">
       <p class="post-detail__content">{{ post.content }}</p>
       <div class="post-detail__info">
         <a class="post-detail__author" [routerLink]="['/profile', post.username]"> {{ post.username }}</a>
         <p class="post-detail__date">{{ post.date | date }}</p>
       </div>
   </div>
-
   <div class="post-detail__like">
     <button class="post-detail__like-btn" (click)="toggleLike()">
-      <img *ngIf="isLiked" src="../../../assets/like-fill.svg" alt="лайк">
-      <img *ngIf="!isLiked" src="../../../assets/like.svg" alt="лайк">
+        <mat-icon class="post-detail__like-icon" *ngIf="!isLiked">favorite_border</mat-icon>
+        <mat-icon class="post-detail__like-icon" *ngIf="isLiked">favorite</mat-icon>
     </button>
-
     <div class="post-detail__like-quantity"> {{ post?.likes?.length }} </div>
-  </div>
+</div>
 
-  <div class="post-detail__edit">
+  <div class="post-detail__edit" *ngIf="isAuthor">
     <a [routerLink]="['/edit-post', post?._id]">Редактировать пост</a>
   </div>
 
@@ -27,7 +25,7 @@
     <form class="post-detail__form" (submit)="addComment()" autocomplete="off">
       <div class="post-detailt__comments-title">Комментарии</div>
       <textarea class="post-detail__comment-textarea" id="text" name="text" placeholder="Комментарий" [(ngModel)]="newComment.text" required></textarea>
-      <button class="post-detail__submit" type="submit">Добавить комментарий</button>
+      <button class="post-detail__comment-submit" type="submit">Добавить комментарий</button>
       <div class="post-detail__comments-errors">
         <div *ngIf="loginCommentError">Войдите в аккаунт, чтобы писать комментарии</div>
         <div *ngIf="emptyCommentError">Комментарий не может быть пустым</div>

@@ -1,9 +1,15 @@
 :root {
 	--main-background-color: #0b1416ff;
 	--main-color: #daffffff;
+	--text-color: #f2f4f5;
 	--border-color: #242c2e;
 	--text-input-background: #1a282d;
 	--hover-color: #223237;
+	--link-color: #b8c5c9;
+	--link-hover-color: #0045ac;
+	--button-accent-background: #0045ac;
+	--button-accent-hover-background: #0d60dd;
+	--button-secondary-background: #33464c;
 }
 
 html, body, div, span, applet, object, iframe,
@@ -49,16 +55,5 @@ table {
 	border-spacing: 0;
 }
 
-.submit-button {
-	width: 200px;
-    height: 50px;
-    font-size: 17px;
-    font-weight: 600;
-    color: #ffffff;
-    background-color: #3375D6;
-    border: 0;
-    border-radius: 12px;
-	cursor: pointer;
-}
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

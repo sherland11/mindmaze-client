@@ -126,4 +126,10 @@ export class ProfileComponent implements OnInit {
       }
     }
   }
+
+  logout() {
+    localStorage.removeItem('user')
+    localStorage.removeItem('token')
+    window.location.reload()
+  }
 }

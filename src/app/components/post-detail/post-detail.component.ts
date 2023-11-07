@@ -19,6 +19,7 @@ export class PostDetailComponent implements OnInit {
   imageSrc: string = ''
   loginCommentError: boolean = false
   emptyCommentError: boolean = false
+  isAuthor: boolean = false
 
   constructor(
     private route: ActivatedRoute,
@@ -45,7 +46,13 @@ export class PostDetailComponent implements OnInit {
                 })
                 this.imageSrc = this.postService.getPostImage(post.image as string)
                 console.log(this.imageSrc)
-                
+                const userData = localStorage.getItem('user')
+                if (userData) {
+                  const username = JSON.parse(userData).username
+                  if (username === post.username) {
+                    this.isAuthor = true
+                  }
+                }
               }
             }
           })

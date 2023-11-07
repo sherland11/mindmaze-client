@@ -1,9 +1,14 @@
 <div class="profile">
     <div class="profile__content" *ngIf="user">
-        <p class="profile__title">Мой профиль<p>
         <div class="profile__user">
-            <img class="profile__avatar" [src]="'http://localhost:3000/posts/images/' + user.avatar" alt="Аватарка">
-            <p class="profile__username">{{ user.username }}</p>
+            <div class="profile__user-info">
+                <img class="profile__avatar" [src]="'http://localhost:3000/posts/images/' + user.avatar" alt="Аватарка">
+                <p class="profile__username">{{ user.username }}</p>
+            </div>
+            <button class="profile__logout" (click)="logout()">
+                <mat-icon>exit_to_app</mat-icon>
+                <p>Выйти</p>
+            </button>
         </div>
         <div class="profile__show-mode">
             <button 
@@ -25,20 +30,20 @@
                 Комментарии
             </button>
         </div>
-        <p *ngIf="showAll || showPosts" class="profile__posts-title">Посты</p>
+        <p *ngIf="showAll || showPosts" class="profile__title">Посты</p>
         <div *ngIf="showAll || showPosts">
             <div *ngFor="let post of posts" class="profile__post">
                 <a [routerLink]="['/post', post._id]">
                     <div class="profile__post-text">
-                        <div class="profile__title">{{ post.title }}</div>
+                        <div class="profile__post-title">{{ post.title }}</div>
                         <img class="profile__post-image" [src]="'http://localhost:3000/posts/images/' + post.image"  alt="Картинка поста">
                         <div class="profile__content">{{ post.content.slice(0, 79) }}</div>
                     </div>
                 </a>
                 <div class="profile__like">
                     <button class="profile__like-btn" (click)="toggleLike(post?._id, post.likes)">
-                      <img *ngIf="isLike(post.likes)" src="../../../assets/like-fill.svg" alt="лайк">
-                      <img *ngIf="!isLike(post.likes)" src="../../../assets/like.svg" alt="лайк">
+                        <mat-icon class="profile__like-icon" *ngIf="!isLike(post.likes)">favorite_border</mat-icon>
+                        <mat-icon class="profile__like-icon" *ngIf="isLike(post.likes)">favorite</mat-icon>
                     </button>
                     <div class="profile__like-quantity"> {{ post?.likes?.length }} </div>
                 </div>
