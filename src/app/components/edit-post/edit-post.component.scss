@@ -3,6 +3,12 @@
     width: 640px;
 }
 
+@media (max-width: 767px) {
+    .edit-post {
+        width: 95%;
+    }
+}
+
 .edit-post__form {
     display: flex;
     flex-direction: column;

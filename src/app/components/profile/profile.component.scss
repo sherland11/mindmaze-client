@@ -2,6 +2,13 @@
     margin: 128px auto;
     width: 640px;
     color: var(--text-color);
+    padding-bottom: 32px;
+}
+
+@media (max-width: 767px) {
+    .profile {
+        width: 95%;
+    }
 }
 
 .profile__title {

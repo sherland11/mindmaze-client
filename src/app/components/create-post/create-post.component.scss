@@ -3,6 +3,12 @@
     width: 640px;
 }
 
+
+@media (max-width: 767px) {
+    .create-post {
+        width: 95%;
+    }
+}
 .create-post__form {
     display: flex;
     flex-direction: column;

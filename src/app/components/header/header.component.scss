@@ -23,10 +23,20 @@
   .header__title {
     font-size: 32px;
   }
+  @media(max-width: 1200px) {
+    .header__title {
+      margin-left: 96px;
+    }
+  }
+}
+
+@media(max-width: 1200px) {
+  .header__navbar {
+    width: 100%;
+  }
 }
 
 .header__profile {
-  position: relative;
   display: flex;
 }
 
@@ -42,6 +52,12 @@
   width: 48px;
   height: 48px;
   border-radius: 50%;
+}
+
+@media(max-width: 1200px) {
+  .header__profile-avatar {
+    margin-right: 16px;
+  }
 }
 
 .header__profile-menu {

@@ -21,6 +21,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
+import {MatSelectModule} from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import { MatIconModule } from '@angular/material/icon';
     MatExpansionModule,
     MatListModule,
     MatIconModule,
+    MatSelectModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

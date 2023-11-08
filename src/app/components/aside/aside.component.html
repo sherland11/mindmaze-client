@@ -1,9 +1,5 @@
-<aside class="aside">
-    <div class="aside__burgerBtn">
-        <button>
-            <mat-icon>view_headline</mat-icon>
-        </button>
-    </div>
+<aside [ngClass]="{'aside': true, 'aside_open': isOpen}">
+    <div *ngIf="isOpen" class="aside__blur"></div>
     <div class="aside__header">
         <a href="/" class="aside__home">
             <mat-icon>home</mat-icon>
@@ -30,3 +26,9 @@
         </mat-expansion-panel>
     </mat-accordion>
 </aside>
+
+<div class="burger-btn">
+    <button (click)="isOpen ? closeMenu() : openMenu()">
+        <mat-icon>view_headline</mat-icon>
+    </button>
+</div>

@@ -6,5 +6,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./aside.component.scss']
 })
 export class AsideComponent {
+  isOpen: boolean = false
 
+  openMenu() {
+    this.isOpen = true
+  }
+
+  closeMenu() {
+    this.isOpen = false
+  }
 }

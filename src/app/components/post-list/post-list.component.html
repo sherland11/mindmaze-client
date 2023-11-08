@@ -6,10 +6,12 @@
             </div>
         </form>
     </div>
-    <div class="post-list__sort-buttons">
-        <button [ngClass]="{'active': sortBy === 'popular'}" (click)="sortPosts('popular')">Популярные</button>
-        <button [ngClass]="{'active': sortBy === 'new'}" (click)="sortPosts('new')">Новые</button>
-    </div>
+    <mat-form-field>
+        <mat-select [(ngModel)]="sortBy" (ngModelChange)="sortPosts(sortBy)">
+          <mat-option value="popular">Популярное</mat-option>
+          <mat-option value="new">Новое</mat-option>
+        </mat-select>
+      </mat-form-field>
     <div *ngFor="let post of posts" class="post-list__post">
         <a [routerLink]="['/post', post._id]">
             <div class="post-list__post-text">

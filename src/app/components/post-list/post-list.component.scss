@@ -17,7 +17,7 @@
         padding: 15px;
         font-size: 20px;
         border-radius: 999px;
-        color: var(--main-color);
+        color: var(--text-color);
         background-color: var(--text-input-background);
         box-shadow: 0;
         border: 0;
@@ -29,7 +29,7 @@
         padding: 20px 24px;
         margin-bottom: 20px;
         text-decoration: none;
-        color: var(--main-color)
+        color: var(--text-color)
         
     }
 
@@ -57,20 +57,10 @@
     }
 }
 
-.post-list__sort-buttons {
-    display: flex;
-    justify-content: space-between;
-    width: 50%;
-    margin: 10px auto;
-}
-
-.post-list__sort-buttons button {
-    background: none;
-    border: 0;
-    border-bottom: 0px solid #00000000;
-    font-size: 24px;
-    color: var(--main-color);
-    transition: all 500ms ease;
+@media (max-width: 767px) {
+    .post-list {
+        width: 95%;
+    }
 }
 
 .post-list__like {

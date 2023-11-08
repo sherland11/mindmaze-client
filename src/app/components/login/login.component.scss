@@ -3,6 +3,12 @@
     width: 640px;
 }
 
+@media (max-width: 767px) {
+    .login {
+        width: 95%;
+    }
+}
+
 .login__form {
     display: flex;
     flex-direction: column;
