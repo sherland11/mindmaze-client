@@ -6,18 +6,20 @@
             </div>
         </form>
     </div>
-    <mat-form-field>
-        <mat-select [(ngModel)]="sortBy" (ngModelChange)="sortPosts(sortBy)">
-          <mat-option value="popular">Популярное</mat-option>
-          <mat-option value="new">Новое</mat-option>
-        </mat-select>
-      </mat-form-field>
+    <div class="post-list__sort">
+        <mat-form-field color="primary">
+            <mat-select [(ngModel)]="sortBy" (ngModelChange)="sortPosts(sortBy)">
+                <mat-option value="popular">Популярное</mat-option>
+                <mat-option value="new">Новое</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
     <div *ngFor="let post of posts" class="post-list__post">
         <a [routerLink]="['/post', post._id]">
             <div class="post-list__post-text">
                 <div class="post-list__title">{{ post.title }}</div>
                 <img class="post-list__post-image" [src]="'http://localhost:3000/posts/images/' + post.image"  alt="Картинка поста">
-                <div class="post-list__content">{{ post.content.slice(0, 79) }}</div>
+                <div class="post-list__content">{{ post.content.slice(0, 60) }}...</div>
             </div>
         </a>
         <div class="post-list__like">

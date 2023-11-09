@@ -16,7 +16,7 @@
   width: 95%;
   a {
     margin-right: 10px;
-    color: var(--main-color);
+    color: var(--text-color);
     text-decoration: none;
     font-size: 18px;
   }
@@ -26,6 +26,16 @@
   @media(max-width: 1200px) {
     .header__title {
       margin-left: 96px;
+    }
+  }
+  @media(max-width: 500px) {
+    .header__title {
+      margin-left: 64px;
+    }
+  }
+  @media(max-width: 350px) {
+    .header__title {
+      font-size: 24px;
     }
   }
 }
@@ -38,13 +48,6 @@
 
 .header__profile {
   display: flex;
-}
-
-.header__profile-dropdown {
-  cursor: pointer;
-  font-size: 18px;
-  color: #c9cccf;
-  padding: 10px;
 }
 
 .header__profile-avatar {
