@@ -7,6 +7,7 @@
 @media (max-width: 767px) {
     .post-detail {
         width: 95%;
+        margin: 96px auto;
     }
 }
 
@@ -19,6 +20,12 @@
     font-weight: 600;
 }
 
+@media (max-width: 767px) {
+    .post-detail__title {
+        font-size: 24px;
+    }
+}
+
 .post-detail__image {
     width: 100%;
     height: auto;
@@ -29,6 +36,12 @@
 .post-detail__content {
     font-size: 20px;
     margin-bottom: 20px;
+}
+
+@media (max-width: 767px) {
+    .post-detail__content {
+        font-size: 18px;
+    }
 }
 
 .post-detail__info {
@@ -81,7 +94,12 @@
 
 .post-detail__comments {
     padding: 24px;
-    border-radius: 12px;
+}
+
+@media (max-width: 767px) {
+    .post-detail__comments {
+        padding: 12px;
+    }
 }
 
 .post-detailt__comments-title {
