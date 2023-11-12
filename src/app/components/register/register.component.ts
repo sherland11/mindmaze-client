@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -14,7 +15,10 @@ export class RegisterComponent {
   usernameError: boolean = false
   selectedImage: any
 
-  constructor(private authService: AuthService) {}
+  constructor(
+    private authService: AuthService,
+    private router: Router
+  ) {}
 
   onFileSelected(event: any) {
     const file = event.target.files[0];
@@ -45,8 +49,10 @@ export class RegisterComponent {
 
   private handleRegistrationResponse(response: any): void {
     if (response.success) {
-      localStorage.setItem('token', response.token);
+      localStorage.setItem('token', response.access_token);
+      localStorage.setItem('user', JSON.stringify(response.user))
       console.log('Пользователь успешно зарегистрирован:', response.message);
+      this.router.navigate(['/profile'])
     } else {
       console.error('Ошибка при регистрации:', response.message);
       if (!this.resetPasswordError) this.usernameError = true

@@ -6,6 +6,5 @@ export interface Post {
     topic: string;
     username: string;
     likes: string[]
-    comments?: Comment[];
     image?: string;
 }

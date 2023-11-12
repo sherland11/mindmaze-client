@@ -69,10 +69,16 @@
     }
 }
 
+@media (max-width: 992px) {
+    .post-list {
+        width: 90%;
+        margin: 96px auto;
+    }
+}
+
 @media (max-width: 767px) {
     .post-list {
         width: 95%;
-        margin: 96px auto;
     }
 }
 

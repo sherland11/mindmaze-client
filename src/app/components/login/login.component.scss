@@ -5,8 +5,14 @@
 
 @media (max-width: 767px) {
     .login {
-        width: 95%;
+        width: 90%;
         margin: 96px auto;
+    }
+}
+
+@media (max-width: 767px) {
+    .login {
+        width: 95%;
     }
 }
 
@@ -19,6 +25,26 @@
     margin-bottom: 20px;
     font-size: 20px;
     padding: 10px;
+    color: var(--text-color);
+    background-color: var(--text-input-background);
+    border-radius: 12px;
+    border: 0;
+}
+
+.login__submit {
+    width: 200px;
+    height: 40px;
+    border-radius: 12px;
+    border: 0;
+    background-color: var(--button-accent-background);
+    color: var(--text-color);
+    font-size: 20px;
+    transition: all 300ms ease;
+    cursor: pointer;
+}
+
+.login__submit:hover {
+    background-color: var(--button-accent-hover-background);
 }
 
 .login__errors {

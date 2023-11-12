@@ -4,10 +4,16 @@
     color: var(--text-color);
 }
 
+@media (max-width: 992px) {
+    .user-profile {
+        width: 90%;
+        margin: 96px auto;
+    }
+}
+
 @media (max-width: 767px) {
     .user-profile {
         width: 95%;
-        margin: 96px auto;
     }
 }
 

@@ -1,9 +1,9 @@
 <header class="header">
     <nav class="header__navbar">
         <a [routerLink]="['/']" class="header__title">MindMaze</a>
-        <div>
-            <a *ngIf="!isUserLogIn" [routerLink]="['/register']">Регистрация</a>
-            <a *ngIf="!isUserLogIn" [routerLink]="['/login']">Вход</a>
+        <div class="header__auth">
+            <a class="header__register" *ngIf="!isUserLogIn" [routerLink]="['/register']">Регистрация</a>
+            <a class="header__login" *ngIf="!isUserLogIn" [routerLink]="['/login']">Вход</a>
         </div>
         <div class="header__profile" *ngIf="isUserLogIn">
             <a [routerLink]="['/profile']">

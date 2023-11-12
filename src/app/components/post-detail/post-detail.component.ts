@@ -38,7 +38,7 @@ export class PostDetailComponent implements OnInit {
             next: (post) => {
               this.post = post
               this.checkIfLiked()
-              console.log(this.post)
+              console.log(this.post.content)
               console.log(post)
               if (this.post) {
                 this.commentService.getCommentsForPost(postId).subscribe((comments) => {

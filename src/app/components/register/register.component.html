@@ -3,8 +3,11 @@
         <input type="text" id="username" name="username" placeholder="Имя пользователя" [(ngModel)]="username" required>
         <input type="password" id="password" name="password" placeholder="Пароль" [(ngModel)]="password" required>
         <input type="password" id="confrimPassword" name="confirmPassword" placeholder="Повторите пароль" [(ngModel)]="confirmPassword" required>
-        <input type="file" id="image" (change)="onFileSelected($event)" accept="image/*">
-        <button class="submit-button" type="submit">Зарегистрироваться</button>
+        <div class="register__input-file">
+            <label for="file">Выбрать изображение</label>
+            <input type="file" name="file" id="image" (change)="onFileSelected($event)" accept="image/*">
+        </div>
+        <button class="register__submit" type="submit">Зарегистрироваться</button>
     </form>
     <div class="register__errors">
         <div *ngIf="resetPasswordError">Пароли не совпадают</div>

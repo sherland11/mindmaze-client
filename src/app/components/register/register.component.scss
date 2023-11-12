@@ -5,6 +5,13 @@
 
 @media (max-width: 767px) {
     .register {
+        width: 90%;
+        margin: 96px auto;
+    }
+}
+
+@media (max-width: 767px) {
+    .register {
         width: 95%;
     }
 }
@@ -16,8 +23,49 @@
 
 .register__form input {
     margin-bottom: 20px;
-    padding: 10px;
     font-size: 20px;
+    padding: 10px;
+    color: var(--text-color);
+    background-color: var(--text-input-background);
+    border-radius: 12px;
+    border: 0;
+}
+
+.register__input-file {
+    position: relative;
+    margin-bottom: 40px;
+}
+
+.register__input-file label {
+    background-color: var(--text-input-background);
+    color: var(--text-color);
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    display: flex;
+    font-size: 20px;
+}
+
+.register__input-file input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+}
+
+.register__submit {
+    width: 200px;
+    height: 40px;
+    border-radius: 12px;
+    border: 0;
+    background-color: var(--button-accent-background);
+    color: var(--text-color);
+    font-size: 20px;
+    transition: all 300ms ease;
+    cursor: pointer;
 }
 
 .register__errors {

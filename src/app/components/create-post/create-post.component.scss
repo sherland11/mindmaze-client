@@ -3,11 +3,17 @@
     width: 640px;
 }
 
+@media (max-width: 992px) {
+    .create-post {
+        width: 90%;
+        margin: 96px auto;
+    }
+}
+
 
 @media (max-width: 767px) {
     .create-post {
         width: 95%;
-        margin: 96px auto;
     }
 }
 .create-post__form {
@@ -30,7 +36,7 @@
 
 .create-post__form textarea {
     resize: none;
-    height: 160px;
+    height: 200px;
     font-size: 20px;
     outline: 0;
     padding: 10px;
@@ -39,6 +45,7 @@
     background-color: var(--text-input-background);
     border: 0;
     border-radius: 6px;
+    font-style: inherit;
 }
 
 

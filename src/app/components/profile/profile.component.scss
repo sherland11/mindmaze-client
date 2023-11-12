@@ -5,10 +5,16 @@
     padding-bottom: 32px;
 }
 
+@media (max-width: 992px) {
+    .profile {
+        width: 90%;
+        margin: 96px auto;
+    }
+}
+
 @media (max-width: 767px) {
     .profile {
         width: 95%;
-        margin: 96px auto;
     }
 }
 

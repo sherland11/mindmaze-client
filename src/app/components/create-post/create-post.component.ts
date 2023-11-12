@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { Post } from 'src/app/models/post.model';
 import { PostService } from 'src/app/services/post.service';
 
@@ -20,7 +21,10 @@ export class CreatePostComponent {
   errorAccount: boolean = false
   errorForm: boolean = false
 
-  constructor(private postService: PostService) {}
+  constructor(
+    private postService: PostService,
+    private router: Router
+  ) {}
 
   onFileSelected(event: any) {
     const file = event.target.files[0];
@@ -48,6 +52,7 @@ export class CreatePostComponent {
         this.postService.createPost(formData).subscribe({
           next: (response) => {
             console.log('Пост успешно создан:', response)
+            this.router.navigate(['/post', response._id])
           },
           error: (error) => {
             console.error(error)
