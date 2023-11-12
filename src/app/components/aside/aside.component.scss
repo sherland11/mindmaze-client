@@ -22,10 +22,25 @@
     z-index: 0;
 }
 
+@media (max-width:767px) {
+    .aside__blur {
+        left: auto;
+        right: 188px;
+    }
+}
+
 @media (max-width:  1200px) {
     .aside {
         left: 0;
         transform: translateX(-100%);
+    }
+}
+
+@media (max-width:767px) {
+    .aside {
+        left: auto;
+        right: 0;
+        transform: translateX(100%);
     }
 }
 
@@ -40,6 +55,14 @@
     top: 16px;
     left: 16px;
     cursor: pointer;
+    z-index: 100000;
+}
+
+@media (max-width:767px) {
+    .burger-btn {
+        left: auto;
+        right: 16px;
+    }
 }
 
 .burger-btn button {
@@ -76,13 +99,20 @@
     height: 40px;
     line-height: 40px;
     border-radius: 12px;
+    transition: all 200ms ease;
+}
+
+@media (max-width: 1200px) {
+    .aside__header a {
+        margin-left: 16px;
+    }
 }
 
 .aside__header .mat-icon {
     width: 20px;
     height: 20px;
     font-size: 20px;
-    margin-right: 5px;
+    margin-right: 10px;
 }
 
 .aside__header a:hover {
@@ -95,21 +125,30 @@
     border-top: 1px solid var(--border-color);
 }
 
-.mat-accordion .mat-expansion-panel:last-of-type {
+::ng-deep .mat-accordion .mat-expansion-panel:last-of-type {
     border-radius: 0;
 }
 
-.mat-expansion-panel-header {
+::ng-deep .mat-expansion-panel-header {
     margin-top: 10px;
     padding-left: 10px;
     color: var(--main-color);
 }
 
-.mat-expansion-panel-header:hover {
+::ng-deep .mat-expansion-panel-header:hover {
     background-color: var(--hover-color) !important;
     border-radius: 999px;
 }
 
-.mat-expansion-panel-header-title {
+::ng-deep .mat-expansion-panel-header-title {
     color: var(--main-color);
+}
+
+::ng-deep a.mdc-list-item {
+    border-radius: 12px;
+    transition: all 200ms ease;
+}
+
+::ng-deep a.mdc-list-item:hover {
+    background-color: var(--hover-color);
 }

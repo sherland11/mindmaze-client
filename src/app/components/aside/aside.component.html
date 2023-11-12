@@ -9,6 +9,14 @@
             <mat-icon>create</mat-icon>
             <p>Написать пост</p>
         </a>
+        <a [routerLink]="['login']" class="aside__login">
+            <mat-icon>login</mat-icon>
+            <p>Вход</p>
+        </a>
+        <a [routerLink]="['register']" class="aside__register">
+            <mat-icon>person_add</mat-icon>
+            <p>Регистрация</p>
+        </a>
     </div>
     <mat-accordion class="aside__accordion">
         <mat-expansion-panel class="aside__accordion mat-elevation-z0">

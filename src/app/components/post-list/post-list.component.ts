@@ -18,7 +18,7 @@ export class PostListComponent implements OnInit {
   constructor(
     private postService: PostService, 
     private formBuilder: FormBuilder,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
   ) {
     this.searchForm = this.formBuilder.group({
       searchTerm: '',

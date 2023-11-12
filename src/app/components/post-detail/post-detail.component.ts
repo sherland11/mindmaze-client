@@ -20,6 +20,7 @@ export class PostDetailComponent implements OnInit {
   loginCommentError: boolean = false
   emptyCommentError: boolean = false
   isAuthor: boolean = false
+  loginLikeError: boolean = false
 
   constructor(
     private route: ActivatedRoute,
@@ -67,10 +68,10 @@ export class PostDetailComponent implements OnInit {
   }
 
   addComment(): void {
-    if (this.post &&  this.newComment.text) {
-      this.emptyCommentError = false
-      const userData = localStorage.getItem('user')
-      if (userData) {
+    const userData = localStorage.getItem('user')
+    if (userData) {
+      if (this.post &&  this.newComment.text) {
+        this.emptyCommentError = false
         this.newComment.author = JSON.parse(userData).username
         this.newComment.postId = this.post._id;
         this.newComment.postTitle = this.post.title;
@@ -85,11 +86,10 @@ export class PostDetailComponent implements OnInit {
           }
         })
       } else {
-        console.error("Ошибка при добавлении комментария: пользователь не вошел в аккаунт")
-        this.loginCommentError = true
+        this.emptyCommentError = true
       }
     } else {
-      this.emptyCommentError = true
+      this.loginCommentError = true
     }
   }
 
@@ -104,6 +104,7 @@ export class PostDetailComponent implements OnInit {
   likePost() {
     const userData = localStorage.getItem('user')
     if (userData) {
+      this.loginLikeError = false
       const username = JSON.parse(userData).username
       this.postService.likePost(this.post?._id as string, username).subscribe({
         next: (updatedPost) => {
@@ -115,7 +116,7 @@ export class PostDetailComponent implements OnInit {
         }
       })
     } else {
-      console.error("Ошибка! Войдите в аккаунт")
+      this.loginLikeError = true
     }
   }
 

@@ -15,8 +15,8 @@
         <mat-icon class="post-detail__like-icon" *ngIf="isLiked">favorite</mat-icon>
     </button>
     <div class="post-detail__like-quantity"> {{ post?.likes?.length }} </div>
+    <div class="post-detail__like-error" *ngIf="loginLikeError">Войдите в аккаунт</div>
 </div>
-
   <div class="post-detail__edit" *ngIf="isAuthor">
     <a [routerLink]="['/edit-post', post?._id]">Редактировать пост</a>
   </div>
