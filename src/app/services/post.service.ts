@@ -40,6 +40,10 @@ export class PostService {
     return this.http.put<Post>(`${this.apiUrl}/${updatedPost.get('_id')}`, updatedPost);
   }
 
+  deletePost(postId: string): Observable<Post> {
+    return this.http.delete<Post>(`${this.apiUrl}/${postId}`)
+  }
+
   likePost(postId: string, username: string): Observable<Post> {
     const likeUrl = `http://localhost:3000/like/${postId}`
     return this.http.post<Post>(likeUrl, {username})

@@ -20,10 +20,13 @@
   <div class="post-detail__edit" *ngIf="isAuthor">
     <a [routerLink]="['/edit-post', post?._id]">Редактировать пост</a>
   </div>
+  <div class="post-detail__delete" *ngIf="isAuthor">
+    <button (click)="deletePost()">Удалить пост</button>
+  </div>
 
   <div class="post-detail__comments" *ngIf="post">
     <form class="post-detail__form" (submit)="addComment()" autocomplete="off">
-      <div class="post-detailt__comments-title">Комментарии</div>
+      <div class="post-detail__comments-title">Комментарии</div>
       <textarea class="post-detail__comment-textarea" id="text" name="text" placeholder="Комментарий" [(ngModel)]="newComment.text" required></textarea>
       <button class="post-detail__comment-submit" type="submit">Добавить комментарий</button>
       <div class="post-detail__comments-errors">

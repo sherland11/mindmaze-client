@@ -1,19 +1,18 @@
 .not-found {
-    width: 100vw;
-    height: 90vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
+  width: 100vw;
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 
-.not-found__title {
+  &__title {
     font-size: 40px;
     font-weight: 600;
     margin-bottom: 20px;
-}
+  }
 
-.not-found__link {
+  &__link {
     text-decoration: none;
     background-color: #3375D6;
     color: white;
@@ -24,4 +23,5 @@
     font-size: 20px;
     margin-bottom: 40px;
     border-radius: 6px;
+  }
 }

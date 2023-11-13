@@ -1,112 +1,103 @@
+$text-color: var(--text-color);
+$text-input-background: var(--text-input-background);
+$button-accent-color: var(--button-accent-color);
+$button-accent-background: var(--button-accent-background);
+$button-accent-hover-background: var(--button-accent-hover-background);
+$error-color: var(--error-color);
+
 .edit-post {
-    margin: 128px auto;
-    width: 640px;
-}
+  margin: 128px auto;
+  width: 640px;
 
-@media (max-width: 767px) {
-    .edit-post {
-        width: 90%;
-        margin: 96px auto;
-    }
-}
+  @media (max-width: 767px) {
+    width: 90%;
+    margin: 96px auto;
+  }
 
+  @media (max-width: 767px) {
+    width: 95%;
+  }
 
-@media (max-width: 767px) {
-    .edit-post {
-        width: 95%;
-    }
-}
-
-.edit-post__form {
+  &__form {
     display: flex;
     flex-direction: column;
-}
 
-.edit-post__form input {
-    height: 32px;
-    font-size: 20px;
-    padding: 10px;
-    margin-bottom: 20px;
-    color: var(--text-color);
-    background-color: var(--text-input-background);
-    outline: 0;
-    border: 0;
-    border-radius: 6px;
-}
+    input,
+    textarea,
+    select {
+      font-size: 20px;
+      padding: 10px;
+      margin-bottom: 20px;
+      color: $text-color;
+      background-color: $text-input-background;
+      outline: 0;
+      border: 0;
+      border-radius: 6px;
+    }
 
+    input {
+      height: 32px;
+    }
 
-.edit-post__form textarea {
-    resize: none;
-    height: 160px;
-    font-size: 20px;
-    outline: 0;
-    padding: 10px;
-    margin-bottom: 20px;
-    color: var(--text-color);
-    background-color: var(--text-input-background);
-    border: 0;
-    border-radius: 6px;
-}
+    textarea {
+      resize: none;
+      height: 200px;
+    }
 
+    select {
+      margin-bottom: 20px;
+    }
+  }
 
-.edit-post__form select {
-    font-size: 20px;
-    padding: 10px;
-    margin-bottom: 20px;
-    background-color: var(--text-input-background);
-    color: var(--text-color);
-    border: 0;
-    border-radius: 6px;
-}
-
-.edit-post__input-file {
+  &__input-file {
     position: relative;
     margin-bottom: 40px;
-}
 
-.edit-post__input-file label {
-    background-color: var(--text-input-background);
-    color: var(--text-color);
-    padding: 10px 20px;
-    border-radius: 6px;
-    cursor: pointer;
-    display: flex;
-    font-size: 20px;
-}
+    label {
+      background-color: $text-input-background;
+      color: $text-color;
+      padding: 10px 20px;
+      border-radius: 6px;
+      cursor: pointer;
+      display: flex;
+      font-size: 20px;
+    }
 
-.edit-post__input-file input {
-    position: absolute;
-    top: 0;
-    left: 0;
-    opacity: 0;
-    cursor: pointer;
-    width: 100%;
-    height: 100%;
-}
+    input {
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0;
+      cursor: pointer;
+      width: 100%;
+      height: 100%;
+    }
+  }
 
-.edit-post__submit {
+  &__submit {
     width: 200px;
     height: 50px;
     font-size: 17px;
     font-weight: 600;
-    color: #ffffff;
-    background-color: var(--button-accent-background);
+    color: $button-accent-color;
+    background-color: $button-accent-background;
     border: 0;
     border-radius: 12px;
-	cursor: pointer;
+    cursor: pointer;
     transition: all 300ms ease;
-}
 
-.edit-post__submit:hover {
-    background-color: var(--button-accent-hover-background);
-}
+    &:hover {
+      background-color: $button-accent-hover-background;
+    }
+  }
 
-.edit-post__error {
+  &__error {
     margin-top: 20px;
-}
 
-.edit-post__error div {
-    font-size: 24px;
-    color: #ff0000;
-    font-weight: 600;
+    div {
+      font-size: 24px;
+      color: $error-color;
+      font-weight: 600;
+    }
+  }
 }

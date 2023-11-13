@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SafeUrl } from '@angular/platform-browser';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Comment } from 'src/app/models/comment.model';
 import { Post } from 'src/app/models/post.model';
 import { CommentService } from 'src/app/services/comment.service';
@@ -25,7 +25,8 @@ export class PostDetailComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private commentService: CommentService,
-    private postService: PostService
+    private postService: PostService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -144,5 +145,16 @@ export class PostDetailComponent implements OnInit {
       const username = JSON.parse(userData).username
       this.isLiked = this.post?.likes.some((like) => like === username) as boolean
     }
+  }
+
+  deletePost() {
+    this.postService.deletePost(this.post?._id as string).subscribe({
+      next: () => {
+        this.router.navigate(['/'])
+      },
+      error: (error) => {
+        console.error(error)
+      }
+    })
   }
 }
