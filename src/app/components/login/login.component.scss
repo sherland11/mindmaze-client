@@ -1,15 +1,12 @@
-$main-margin: 128px;
-$main-width: 640px;
 $text-color: var(--text-color);
 $text-input-background: var(--text-input-background);
 $button-accent-background: var(--button-accent-background);
 $button-accent-hover-background: var(--button-accent-hover-background);
-$error-color: #ff0000;
-$error-weight: 600;
+$error-color: var(--error-color);
 
 .login {
-  margin: $main-margin auto;
-  width: $main-width;
+  margin: 128px auto;
+  width: 640px;;
 
   @media (max-width: 767px) {
     width: 90%;
@@ -55,6 +52,6 @@ $error-weight: 600;
     margin-top: 20px;
     font-size: 24px;
     color: $error-color;
-    font-weight: $error-weight;
+    font-weight: 600;
   }
 }

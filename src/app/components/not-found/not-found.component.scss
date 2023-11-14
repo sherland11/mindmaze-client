@@ -10,12 +10,13 @@
     font-size: 40px;
     font-weight: 600;
     margin-bottom: 20px;
+    color: var(--text-color);
   }
 
   &__link {
     text-decoration: none;
-    background-color: #3375D6;
-    color: white;
+    background-color: var(--button-accent-background);
+    color: var(--button-accent-color);
     width: 240px;
     height: 40px;
     line-height: 40px;
@@ -23,5 +24,10 @@
     font-size: 20px;
     margin-bottom: 40px;
     border-radius: 6px;
+    transition: all 300ms ease;
+
+    &:hover {
+      background-color: var(--button-accent-hover-background);
+    }
   }
 }

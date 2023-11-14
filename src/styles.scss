@@ -1,6 +1,5 @@
 :root {
 	--main-background-color: #0b1416ff;
-	--main-color: #daffffff;
 	--text-color: #f2f4f5;
 	--text-accent-color: #0045ac;
 	--border-color: #242c2e;
@@ -9,14 +8,15 @@
 	--link-color: #b8c5c9;
 	--link-hover-color: #0045ac;
 	--button-accent-background: #0045ac;
+	--button-accent-hover-background: #0d60dd;
 	--button-accent-color: #ffffff;
 	--button-accent-background-second: #ffffff;
 	--button-accent-background-second-hover: #dddddd;
 	--button-accent-color-second: #000000;
-	--button-accent-hover-background: #0d60dd;
 	--button-secondary-background: #2a3333;
-	--button-secondary-background-hover: #455158;	
+	--button-secondary-background-hover: #363e42;	
 	--error-color: #ff0000;
+	--caret-color: #daffffff;
 }
 
 html, body, div, span, applet, object, iframe,

@@ -31,7 +31,7 @@
         background-color: var(--text-input-background);
         box-shadow: 0;
         border: 0;
-        caret-color: var(--main-color);
+        caret-color: var(--caret-color);
         outline: 0;
     }
 
@@ -99,7 +99,7 @@
     }
     
     &__like-icon {
-        color: var(--main-color);
+        color: var(--text-color);
         width: 32px;
         height: 32px;
         font-size: 32px;

@@ -1,5 +1,5 @@
 <aside [ngClass]="{'aside': true, 'aside_open': isOpen}">
-    <div *ngIf="isOpen" class="aside__blur"></div>
+    <div *ngIf="isOpen" class="aside__blur" (click)="closeMenu()"></div>
     <div class="aside__header">
         <a href="/" class="aside__home">
             <mat-icon>home</mat-icon>
