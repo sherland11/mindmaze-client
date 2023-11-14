@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SafeUrl } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 import { Comment } from 'src/app/models/comment.model';
 import { Post } from 'src/app/models/post.model';
 import { CommentService } from 'src/app/services/comment.service';
@@ -26,7 +27,8 @@ export class PostDetailComponent implements OnInit {
     private route: ActivatedRoute,
     private commentService: CommentService,
     private postService: PostService,
-    private router: Router
+    private router: Router,
+    private cookieService: CookieService
   ) { }
 
   ngOnInit(): void {
@@ -69,7 +71,7 @@ export class PostDetailComponent implements OnInit {
   }
 
   addComment(): void {
-    const userData = localStorage.getItem('user')
+    const userData = this.cookieService.get('user');
     if (userData) {
       if (this.post &&  this.newComment.text) {
         this.emptyCommentError = false
@@ -103,7 +105,7 @@ export class PostDetailComponent implements OnInit {
   }
 
   likePost() {
-    const userData = localStorage.getItem('user')
+    const userData = this.cookieService.get('user');
     if (userData) {
       this.loginLikeError = false
       const username = JSON.parse(userData).username
@@ -122,7 +124,7 @@ export class PostDetailComponent implements OnInit {
   }
 
   deleteLike() {
-    const userData = localStorage.getItem('user')
+    const userData = this.cookieService.get('user');
     if (userData) {
       const username = JSON.parse(userData).username
       this.postService.deleteLike(this.post?._id as string, username).subscribe({
@@ -140,7 +142,7 @@ export class PostDetailComponent implements OnInit {
   }
 
   private checkIfLiked() {
-    const userData = localStorage.getItem('user')
+    const userData = this.cookieService.get('user');
     if (userData) {
       const username = JSON.parse(userData).username
       this.isLiked = this.post?.likes.some((like) => like === username) as boolean

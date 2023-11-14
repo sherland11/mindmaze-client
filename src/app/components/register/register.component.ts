@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -17,7 +18,8 @@ export class RegisterComponent {
 
   constructor(
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private cookieService: CookieService
   ) {}
 
   onFileSelected(event: any) {
@@ -49,8 +51,8 @@ export class RegisterComponent {
 
   private handleRegistrationResponse(response: any): void {
     if (response.success) {
-      localStorage.setItem('token', response.access_token);
-      localStorage.setItem('user', JSON.stringify(response.user))
+      this.cookieService.set('token', response.access_token);
+      this.cookieService.set('user', JSON.stringify(response.user));
       console.log('Пользователь успешно зарегистрирован:', response.message);
       this.router.navigate(['/profile'])
     } else {

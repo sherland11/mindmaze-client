@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CookieService } from 'ngx-cookie-service';
 import User from 'src/app/models/User';
 import { AuthService } from 'src/app/services/auth.service';
 
@@ -14,7 +15,10 @@ export class HeaderComponent implements OnInit {
     avatar: ''
   }
 
-  constructor(private authService: AuthService) {}
+  constructor(
+    private authService: AuthService,
+    private cookieService: CookieService
+  ) {}
 
   logout(): void {
     this.authService.logout()
@@ -23,11 +27,10 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    const userData = localStorage.getItem('user')
+    const userData = this.cookieService.get('user');
     if (userData) {
-      this.user = JSON.parse(userData)
-      this.isUserLogIn = true
-
+      this.user = JSON.parse(userData);
+      this.isUserLogIn = true;
     }
   }
 }

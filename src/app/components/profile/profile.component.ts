@@ -3,6 +3,8 @@ import { Post } from 'src/app/models/post.model';
 import { Comment } from 'src/app/models/comment.model';
 import { PostService } from 'src/app/services/post.service';
 import { CommentService } from 'src/app/services/comment.service';
+import { CookieService } from 'ngx-cookie-service';
+import User from 'src/app/models/User';
 
 @Component({
   selector: 'app-profile',
@@ -10,7 +12,7 @@ import { CommentService } from 'src/app/services/comment.service';
   styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent implements OnInit {
-  user: any
+  user: User | undefined;
   posts: Post[] = []
   comments: Comment[] = []
   showAll: boolean = true
@@ -19,32 +21,33 @@ export class ProfileComponent implements OnInit {
 
   constructor(
     private postService: PostService,
-    private commentService: CommentService
+    private commentService: CommentService,
+    private cookieService: CookieService
   ) {}
 
   ngOnInit(): void {
-    const userData = localStorage.getItem('user')
+    const userData = this.cookieService.get('user');
     if (userData) {
       this.user = JSON.parse(userData)
+      this.postService.getPosts().subscribe({
+        next: (posts) => {
+          this.posts = posts.filter((post) => post.username === this.user?.username)
+          console.log(this.posts)
+        },
+        error: (error) => {
+          console.error(error)
+        }
+      })
+      this.commentService.getCommentsByUsername(this.user?.username as string).subscribe({
+        next: (comments) => {
+          this.comments = comments
+          console.log(comments)
+        },
+        error: (error) => {
+          console.error(error)
+        }
+      })
     }
-    this.postService.getPosts().subscribe({
-      next: (posts) => {
-        this.posts = posts.filter((post) => post.username === this.user.username)
-        console.log(this.posts)
-      },
-      error: (error) => {
-        console.error(error)
-      }
-    })
-    this.commentService.getCommentsByUsername(this.user.username).subscribe({
-      next: (comments) => {
-        this.comments = comments
-        console.log(comments)
-      },
-      error: (error) => {
-        console.error(error)
-      }
-    })
   }
 
   setShowAll() {
@@ -66,9 +69,8 @@ export class ProfileComponent implements OnInit {
   }
 
   isLike(postLikes: string[]) {
-    const userdata = localStorage.getItem('user')
-    if (userdata) {
-      const username = JSON.parse(userdata).username
+    if (this.user) {
+      const username = this.user.username
       if (postLikes.includes(username)) {
         return true
       } else {
@@ -80,9 +82,8 @@ export class ProfileComponent implements OnInit {
   }
 
   likePost(postId: string) {
-    const userData = localStorage.getItem('user')
-    if (userData) {
-      const username = JSON.parse(userData).username
+    if (this.user) {
+      const username = this.user.username
       this.postService.likePost(postId, username).subscribe({
         next: (updatedPost) => {
           const index = this.posts.findIndex(post => post._id === updatedPost._id)
@@ -98,9 +99,8 @@ export class ProfileComponent implements OnInit {
   }
 
   deleteLike(postId: string) {
-    const userData = localStorage.getItem('user')
-    if (userData) {
-      const username = JSON.parse(userData).username
+    if (this.user) {
+      const username = this.user.username
       this.postService.deleteLike(postId, username).subscribe({
         next: (updatedPost) => {
           const index = this.posts.findIndex(post => post._id === updatedPost._id)
@@ -116,9 +116,8 @@ export class ProfileComponent implements OnInit {
   }
 
   toggleLike(postId: string | undefined, postLikes: string[]) {
-    const userdata = localStorage.getItem('user')
-    if (postId && userdata) {
-      const username = JSON.parse(userdata).username
+    if (postId && this.user) {
+      const username = this.user.username
       if (postLikes.includes(username)) {
         this.deleteLike(postId)
       } else {
@@ -128,8 +127,8 @@ export class ProfileComponent implements OnInit {
   }
 
   logout() {
-    localStorage.removeItem('user')
-    localStorage.removeItem('token')
+    this.cookieService.delete('user')
+    this.cookieService.delete('token')
     window.location.reload()
   }
 }

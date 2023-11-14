@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-login',
@@ -11,7 +12,10 @@ export class LoginComponent {
   password: string = ''
   loginError: boolean = false
 
-  constructor(private authService: AuthService) {}
+  constructor(
+    private authService: AuthService,
+    private cookieService: CookieService
+  ) {}
 
   onSubmit(): void {
 
@@ -28,8 +32,8 @@ export class LoginComponent {
 
   private handleLoginResponse(response: any): void {
     if (response.success) {
-      localStorage.setItem('token', response.access_token)
-      localStorage.setItem('user', JSON.stringify(response.user))
+      this.cookieService.set('token', response.access_token);
+      this.cookieService.set('user', JSON.stringify(response.user));
       console.log(response.user)
       console.log("Вход выполнен успешно: ", response.message)
       window.location.reload()

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 import { Post } from 'src/app/models/post.model';
 import { PostService } from 'src/app/services/post.service';
 
@@ -23,7 +24,8 @@ export class CreatePostComponent {
 
   constructor(
     private postService: PostService,
-    private router: Router
+    private router: Router,
+    private cookieService: CookieService
   ) {}
 
   onFileSelected(event: any) {
@@ -35,10 +37,10 @@ export class CreatePostComponent {
   }
 
   onSubmit() {
-    const userData = localStorage.getItem('user')
+    const userData = this.cookieService.get('user');
     if (userData) {
-      const userName = JSON.parse(userData).username
-      this.post.username = userName
+      const userName = JSON.parse(userData).username;
+      this.post.username = userName;
 
       const formData = new FormData()
       if (this.post.title && this.post.content && this.post.topic && this.selectedImage) {

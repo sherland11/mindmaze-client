@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 import { debounceTime, switchMap } from 'rxjs';
 import { Post } from 'src/app/models/post.model';
 import { PostService } from 'src/app/services/post.service';
@@ -19,6 +20,7 @@ export class PostListComponent implements OnInit {
     private postService: PostService, 
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
+    private cookieService: CookieService
   ) {
     this.searchForm = this.formBuilder.group({
       searchTerm: '',
@@ -82,9 +84,9 @@ export class PostListComponent implements OnInit {
    }
 
    toggleLike(postId: string | undefined, postLikes: string[]) {
-    const userdata = localStorage.getItem('user')
-    if (postId && userdata) {
-      const username = JSON.parse(userdata).username
+    const userData = this.cookieService.get('user');
+    if (postId && userData) {
+      const username = JSON.parse(userData).username
       if (postLikes.includes(username)) {
         this.deleteLike(postId)
       } else {
@@ -94,7 +96,7 @@ export class PostListComponent implements OnInit {
   }
 
   likePost(postId: string) {
-    const userData = localStorage.getItem('user')
+    const userData = this.cookieService.get('user');
     if (userData) {
       const username = JSON.parse(userData).username
       this.postService.likePost(postId, username).subscribe({
@@ -112,7 +114,7 @@ export class PostListComponent implements OnInit {
   }
 
   deleteLike(postId: string) {
-    const userData = localStorage.getItem('user')
+    const userData = this.cookieService.get('user');
     if (userData) {
       const username = JSON.parse(userData).username
       this.postService.deleteLike(postId, username).subscribe({
@@ -130,9 +132,9 @@ export class PostListComponent implements OnInit {
   }
 
   isLike(postLikes: string[]) {
-    const userdata = localStorage.getItem('user')
-    if (userdata) {
-      const username = JSON.parse(userdata).username
+    const userData = this.cookieService.get('user');
+    if (userData) {
+      const username = JSON.parse(userData).username
       if (postLikes.includes(username)) {
         return true
       } else {

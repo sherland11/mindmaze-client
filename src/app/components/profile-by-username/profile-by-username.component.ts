@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
+import User from 'src/app/models/User';
 import { Comment } from 'src/app/models/comment.model';
 import { Post } from 'src/app/models/post.model';
 import { CommentService } from 'src/app/services/comment.service';
@@ -14,7 +15,7 @@ import { ProfileByUsernameService } from 'src/app/services/profile-by-username.s
 })
 export class ProfileByUsernameComponent implements OnInit {
   username: string = ''
-  userData: any
+  userData: User | undefined
   posts: Post[] = []
   comments: Comment[] = []
   showAll: boolean = true
